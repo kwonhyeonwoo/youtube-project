@@ -2,9 +2,32 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [title, setTitle] = useState<string>('');
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)
-
+  const [data, setData] = useState({
+    title:'',
+    description:'',
+    hashtags:''
+  });
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+    const {name,value} = event.target;
+    if(name === 'title'){
+      setData(current => ({
+        ...current,
+        title: value
+      }));
+    }
+    if (name === 'description') {
+      setData(current => ({
+        ...current,
+        description: value
+      }));
+    }
+    if (name === 'hashtags') {
+      setData(current => ({
+        ...current,
+        hashtags: value
+      }));
+    }
+  }
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -13,7 +36,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title })
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -46,7 +69,9 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
-        <input type="text" onChange={onChange} name='title' />
+        <input type="text" onChange={onChange} value={data.title} name='title' />
+        <input type="text" onChange={onChange} name='description' />
+        <input type="text" onChange={onChange} name='hashtags' />
         <button>submit</button>
       </form>
     </div>
