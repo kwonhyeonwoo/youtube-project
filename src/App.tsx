@@ -3,13 +3,14 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState({
-    title:'',
-    description:'',
-    hashtags:''
+    title: '',
+    description: '',
+    hashtags: ''
   });
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    const {name,value} = event.target;
-    if(name === 'title'){
+  const [videos, setVideos] = useState([]);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name === 'title') {
       setData(current => ({
         ...current,
         title: value
@@ -49,23 +50,26 @@ function App() {
       console.error('Error during fetching:', error);
     }
   };
-  useEffect(()=>{
-    const fetchData = async()=>{
-      try{
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         const response = await fetch('http://localhost:4000/videos/upload', {
           method: "GET",
           headers: {
-            "Content-Type": "applicaation/json"
+            "Content-Type": "applicaation/json",
+            "credentials": "include"
           }
         })
         const responseData = await response.json();
+        setVideos(responseData);
         console.log('responseData', responseData);
-      }catch(e){
+      } catch (e) {
         console.log(e);
       }
     }
     fetchData();
-  },[])
+  }, [])
+  console.log('videos', videos)
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
