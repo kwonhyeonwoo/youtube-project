@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import { Video } from "./Video";
 import { useParams } from "react-router-dom";
 
-const VideoPost = ()=>{
+const VideoPost = () => {
     const [videos, setVideos] = useState<Video[]>([]);
     const params = useParams();
     const [data, setData] = useState({
-        title:'',
-        description:'',
-        hashtags:''
+        title: '',
+        description: '',
+        hashtags: ''
     })
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
-        const {name, value}= event.target;
-        if(name === 'title'){
-            setData((prev)=>({
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        if (name === 'title') {
+            setData((prev) => ({
                 ...prev,
-                title:value
+                title: value
             }))
         };
         if (name === 'description') {
@@ -31,21 +31,22 @@ const VideoPost = ()=>{
             }))
         }
     }
-    const onSubmit = async(event:React.FormEvent<HTMLFormElement>)=>{
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const res = await fetch('http://localhost:4000/videos/edit',{
-            method:"POST",
-            headers:{
-                "Content-Type":'application/json',
+        const res = await fetch('http://localhost:4000/videos/edit', {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json',
+
             },
-            body:JSON.stringify({
-                title:data.title,
-                description:data.description,
-                hashtags:data.hashtags,
-                id:params.id
+            body: JSON.stringify({
+                title: data.title,
+                description: data.description,
+                hashtags: data.hashtags,
+                id: params.id
             })
         });
-        console.log('res',res)
+        console.log('res', res)
     }
     useEffect(() => {
         const fetchData = async () => {
@@ -66,10 +67,10 @@ const VideoPost = ()=>{
         }
         fetchData();
     }, [])
-    return(
+    return (
         <div>
             <form action="" onSubmit={onSubmit}>
-                <input type="text" placeholder={videos[0]?.title} name='title' onChange={onChange}/>
+                <input type="text" placeholder={videos[0]?.title} name='title' onChange={onChange} />
                 <input type="text" placeholder={videos[0]?.description} name='description' onChange={onChange} />
                 <input type="text" value={videos[0]?.hashtags} onChange={onChange} name='hashtags' />
                 <button>submit</button>

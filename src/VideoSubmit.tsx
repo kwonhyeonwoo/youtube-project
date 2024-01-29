@@ -1,64 +1,83 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const VideoSubmit = ()=>{
-    const [data, setData] = useState({
-        title: '',
-        description: '',
-        hashtags: ''
+type Data = {
+    email: string;
+    name: string;
+    userId: string
+    password: string
+}
+const VideoSubmit = () => {
+    const [data, setData] = useState<Data>({
+        email: '',
+        name: '',
+        userId: '',
+        password: ''
     });
-    const navigate = useNavigate();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        if (name === 'title') {
+        if (name === 'email') {
             setData(current => ({
                 ...current,
-                title: value
+                email: value
             }));
         }
-        if (name === 'description') {
+        if (name === 'name') {
             setData(current => ({
                 ...current,
-                description: value
+                name: value
             }));
         }
-        if (name === 'hashtags') {
+        if (name === 'userId') {
             setData(current => ({
                 ...current,
-                hashtags: value
+                userId: value
+            }));
+        }
+        if (name === 'password') {
+            setData(current => ({
+                ...current,
+                password: value
             }));
         }
     }
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log('data', data)
         try {
-            const response = await fetch('http://localhost:4000/videos/upload', {
+            const response = await fetch('http://localhost:4000/account', {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "credentials": 'include'
+
                 },
                 body: JSON.stringify(data)
             });
-
+            const responseData = await response.json();
+            if (response.ok) {
+                return console.log('responseDat', responseData)
+            }
             if (!response.ok) {
+                console.log('error;', responseData)
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const responseData = await response.json();
             console.log('responseData', responseData);
         } catch (error) {
             console.error('Error during fetching:', error);
         }
+        console.log('data', data)
     };
 
-    return(
+    return (
         <div>
             <form onSubmit={onSubmit}>
-            <input type="text" onChange={onChange} value={data.title} name='title' />
-            <input type="text" onChange={onChange} name='description' />
-            <input type="text" onChange={onChange} name='hashtags' />
-            <button>submit</button>
-        </form>
+                <input type="email" onChange={onChange} name='email' />
+                <input type="text" onChange={onChange} name='name' />
+                <input type="text" onChange={onChange} name='userId' />
+                <input type="password" onChange={onChange} name='password' />
+                <button>submit</button>
+            </form>
         </div>
     )
 }
