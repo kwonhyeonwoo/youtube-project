@@ -29,7 +29,6 @@ const Home = () => {
             })
             const responseData = await response.json();
             if (response.status === 200) {
-                console.log('responsedata', responseData)
                 setData(responseData);
             }
             if (!response.ok) {
@@ -39,6 +38,21 @@ const Home = () => {
         }
         fetchData();
     }, []);
+    useEffect(()=>{
+        const fetchData = async()=>{
+            const response = await fetch('http://localhost:4000/users',{
+                method:"GET",
+                headers:{
+                    "Content-Type":"application/json",
+                    "credentials": 'include'
+
+                }
+            });
+            const responseData = await response.json();
+            console.log('data',responseData)
+        };
+        fetchData();
+    })
     console.log('data', data)
     return (
         <div>

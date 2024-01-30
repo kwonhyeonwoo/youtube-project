@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState({
         userId: '',
         password: '',
@@ -33,8 +35,9 @@ const Login = () => {
                 password: data.password
             })
         });
-
-        console.log('response', response);
+        const responseData =await  response.json();
+        console.log('response', responseData)
+        navigate('/')
     }
     return (
         <div>
