@@ -37,7 +37,6 @@ const Login = () => {
         });
         const responseData =await  response.json();
         console.log('response', responseData)
-        navigate('/')
     }
     return (
         <div>

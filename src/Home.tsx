@@ -21,38 +21,38 @@ const Home = () => {
     }
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:4000/videos', {
+            const response = await fetch('http://localhost:4000', {
                 method: "GET",
                 headers: {
-                    "Content-Type": 'application/json'
-                }
-            })
-            const responseData = await response.json();
-            if (response.status === 200) {
-                setData(responseData);
-            }
-            if (!response.ok) {
-                console.log('response error', responseData);
-                console.log('error')
-            }
-        }
-        fetchData();
-    }, []);
-    useEffect(()=>{
-        const fetchData = async()=>{
-            const response = await fetch('http://localhost:4000/users',{
-                method:"GET",
-                headers:{
-                    "Content-Type":"application/json",
+                    "Content-Type": "application/json",
                     "credentials": 'include'
-
                 }
             });
             const responseData = await response.json();
-            console.log('data',responseData)
+            console.log('data', responseData)
         };
         fetchData();
     })
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await fetch('http://localhost:4000/videos', {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": 'application/json'
+    //             }
+    //         })
+    //         const responseData = await response.json();
+    //         if (response.status === 200) {
+    //             setData(responseData);
+    //         }
+    //         if (!response.ok) {
+    //             console.log('response error', responseData);
+    //             console.log('error')
+    //         }
+    //     }
+    //     fetchData();
+    // }, []);
+    
     console.log('data', data)
     return (
         <div>
