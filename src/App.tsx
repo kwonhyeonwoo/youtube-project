@@ -1,25 +1,22 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import VideoSubmit from './VideoSubmit';
-import Video from './Video';
-import VideoPost from './VideoPost';
-import Home from './Home';
-import Search from './Search';
-import Login from './Login';
-
+import { Route, Routes } from "react-router-dom";
+import HomeContainer from "./pages/Home/Container/HomeContainer";
+import ProfileContainer from "./pages/Profile/Container/ProfileContainer";
+import AccountContainer from "./pages/Account/Container/AccountContainer";
+import LoginContainer from "./pages/Login/Container/LoginContainer";
+import "./config/core.css";
+import HeaderContainer from "./components/Header/Container/HeaderContainer";
 function App() {
-
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
+    <div>
+      <HeaderContainer />
+      <Routes>
+        <Route path="/" element={<HomeContainer />} />
+        <Route path="/login" element={<LoginContainer />} />
+        <Route path="/account" element={<AccountContainer />} />
+        <Route path="/:id/profile" element={<ProfileContainer />} />
+      </Routes>
+    </div>
 
-      <Route path='/submit' element={<VideoSubmit />} />
-      <Route path='/videos/post' element={<Video />} />
-      <Route path='/videos/:id' element={<VideoPost />} />
-      <Route path='/search' element={<Search />} />
-      <Route path='/login' element={<Login />} />
-    </Routes>
   );
 }
 
