@@ -2,12 +2,14 @@
     .header {
         width: 100%;
         position: fixed;
-
+        z-index:1;
+        top:0;
+        left:0;
         &>.wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 20px 20px;
 
 
 
@@ -15,12 +17,18 @@
                 display: flex;
                 align-items: center;
                 column-gap: 8px;
-
                 &>.menu-svg {
-                    width: 27px;
-                    height: 27px;
-                    color: white;
-                }
+                        width: 27px;
+                        height: 27px;
+                        color: white;
+                        cursor: pointer;
+                
+                        &:hover {
+                
+                            color: rgba(255, 255, 255, 0.5);
+                        }
+                
+                    }
 
                 &>.logo {
                     display: flex;
@@ -53,6 +61,7 @@
                     color: white;
                     padding-left: 12px;
                     font-size: 15px;
+                    outline: none;
                 }
 
                 &>.glass-svg {

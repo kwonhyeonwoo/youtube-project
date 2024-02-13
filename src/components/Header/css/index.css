@@ -1,6 +1,9 @@
 #root .header {
   width: 100%;
   position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 #root .header > .wrapper {
   display: -webkit-box;
@@ -12,7 +15,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 15px 20px;
+  padding: 20px 20px;
 }
 #root .header > .wrapper > .logo-wrapper {
   display: -webkit-box;
@@ -29,6 +32,10 @@
   width: 27px;
   height: 27px;
   color: white;
+  cursor: pointer;
+}
+#root .header > .wrapper > .logo-wrapper > .menu-svg:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 #root .header > .wrapper > .logo-wrapper > .logo {
   display: -webkit-box;
@@ -59,6 +66,7 @@
   color: white;
   padding-left: 12px;
   font-size: 15px;
+  outline: none;
 }
 #root .header > .wrapper > .search-wrapper > .glass-svg {
   position: absolute;

@@ -1,0 +1,68 @@
+#root .sidebar-wrapper {
+  padding: 120px 0px 0px 10px;
+  color: white;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+#root .sidebar-wrapper > .container {
+  width: 200px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper {
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 53px;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .title {
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 35px;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists > .menu-list {
+  width: 188px;
+  padding-left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists > .menu-list:hover svg,
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists > .menu-list:hover a {
+  color: rgba(255, 255, 255, 0.7);
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists > .menu-list a {
+  color: white;
+  font-size: 14px;
+}
+#root .sidebar-wrapper > .container > .sidebar-menu-wrapper > .menu-wrapper > .menu-lists > .menu-list > .subscribe-profile {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: gray;
+}
