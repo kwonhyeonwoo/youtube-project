@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Account from '../Account';
 import { useNavigate } from 'react-router-dom';
 type Account = {
-    avatar: any | null;
     name: string;
     nickName: string;
     email: string;
@@ -11,7 +10,6 @@ type Account = {
 }
 const AccountContainer = () => {
     const [accountData, setAccountData] = useState<Account>({
-        avatar: null,
         name: "",
         nickName: "",
         email: "",
@@ -23,16 +21,15 @@ const AccountContainer = () => {
         nickNameErr: "",
         emailErr: "",
     });
+    const [selectedFile, setselectedFile] = useState<File | null>(null);
     const navigate = useNavigate();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value, files, name } = event.target;
-        if (name === 'avatar') {
-            if (files) {
-                setAccountData(current => ({
-                    ...current,
-                    avatar: files[0],
-                }));
-            }
+        console.log('accountData', accountData)
+        if (name === 'avatar' && files && files.length > 0) {
+            console.log('files', files[0])
+
+            setselectedFile(files[0])
         };
         if (name === 'name') {
             setAccountData(current => ({
@@ -75,18 +72,20 @@ const AccountContainer = () => {
         event.preventDefault();
         try {
             const formData = new FormData();
-            formData.append('avatar', accountData.avatar);
+            formData.append('avatar', selectedFile as Blob);
+            formData.append('email', accountData.email);
             formData.append('name', accountData.name);
             formData.append('nickName', accountData.nickName);
             formData.append('password', accountData.password);
             console.log('foirmData', formData)
             const response = await fetch('http://localhost:4000/account', {
                 method: "POST",
-                headers: {
-                    // 'Content-Type': "application/json",
-                    // "credentials": "include"
-                },
+                // headers: {
+                //     'Content-Type': "multipart/form-data",
+                //     "credentials": "include"
+                // },
                 body: formData,
+                credentials: "include",
             })
             const responseData = await response.json();
             if (response.ok) {

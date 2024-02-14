@@ -50,9 +50,6 @@
           box-sizing: border-box;
   border: 1px solid rgba(170, 170, 170, 0.6666666667);
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper [type=file] {
-  display: none;
-}
 #root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .account-button {
   background-color: white;
   width: 222px;
