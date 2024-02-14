@@ -25,11 +25,10 @@ const AccountContainer = () => {
     const navigate = useNavigate();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value, files, name } = event.target;
-        console.log('accountData', accountData)
         if (name === 'avatar' && files && files.length > 0) {
-            console.log('files', files[0])
-
             setselectedFile(files[0])
+            console.log('files', selectedFile)
+
         };
         if (name === 'name') {
             setAccountData(current => ({
@@ -80,12 +79,7 @@ const AccountContainer = () => {
             console.log('foirmData', formData)
             const response = await fetch('http://localhost:4000/account', {
                 method: "POST",
-                // headers: {
-                //     'Content-Type': "multipart/form-data",
-                //     "credentials": "include"
-                // },
                 body: formData,
-                credentials: "include",
             })
             const responseData = await response.json();
             if (response.ok) {
