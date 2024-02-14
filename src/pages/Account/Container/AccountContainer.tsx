@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 import Account from '../Account';
 import { useNavigate } from 'react-router-dom';
-type Account={
-    avatar:any | null;
-    name:string;
-    nickName:string;
-    email:string;
-    password:string;
-    passwordCheck:string;
+type Account = {
+    avatar: any | null;
+    name: string;
+    nickName: string;
+    email: string;
+    password: string;
+    passwordCheck: string;
 }
 const AccountContainer = () => {
     const [accountData, setAccountData] = useState<Account>({
-        avatar:null,
-        name:"",
-        nickName:"",
-        email:"",
-        password:"",
-        passwordCheck:""
+        avatar: null,
+        name: "",
+        nickName: "",
+        email: "",
+        password: "",
+        passwordCheck: ""
     })
     const [isError, setIsError] = useState({
-        passwordErr:"",
-        nickNameErr:"",
-        emailErr:"",
+        passwordErr: "",
+        nickNameErr: "",
+        emailErr: "",
     });
     const navigate = useNavigate();
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
-        const{value,files,name} = event.target;
-        if(name === 'avatar'){
-            if(files){
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value, files, name } = event.target;
+        if (name === 'avatar') {
+            if (files) {
                 setAccountData(current => ({
                     ...current,
                     avatar: files[0],
@@ -64,33 +64,42 @@ const AccountContainer = () => {
                 passwordCheck: value
             }));
         };
-        if(accountData.password !== accountData.passwordCheck){
-            setIsError(current=>({
+        if (accountData.password !== accountData.passwordCheck) {
+            setIsError(current => ({
                 ...current,
-                passwordErr:"비밀번호가 올바르지 않습니다"
+                passwordErr: "비밀번호가 올바르지 않습니다"
             }))
         }
     }
-    const AccountSubmit = async(event:React.MouseEvent<HTMLButtonElement>)=>{
-        try{
+    const AccountSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        try {
             const formData = new FormData();
-            formData.append('avatar',accountData.avatar);
-            formData.append('name',accountData.name);
-            formData.append('nickName',accountData.nickName);
-            formData.append('password',accountData.password);
+            formData.append('avatar', accountData.avatar);
+            formData.append('name', accountData.name);
+            formData.append('nickName', accountData.nickName);
+            formData.append('password', accountData.password);
             console.log('foirmData', formData)
-            const response = await fetch('http://localhost:4000/account',{
-                method:"POST",
-                body:formData,
+            const response = await fetch('http://localhost:4000/account', {
+                method: "POST",
+                headers: {
+                    // 'Content-Type': "application/json",
+                    // "credentials": "include"
+                },
+                body: formData,
             })
             const responseData = await response.json();
-            if(response.ok){
-                console.log('responseData',responseData);
+            if (response.ok) {
+                console.log('responseData', responseData);
                 navigate('/login')
             }
-          
-        }catch(error){  
-            console.log('server error',error)
+            if (response.status === 400) {
+                console.log('error', responseData);
+                return responseData;
+            }
+
+        } catch (error) {
+            console.log('server error', error)
         }
     }
     return <Account

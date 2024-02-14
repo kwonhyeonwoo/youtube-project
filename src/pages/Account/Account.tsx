@@ -1,25 +1,25 @@
 import React, { Fragment } from 'react';
 import "./css/index.css";
-type Props={
-    ChangeData : (event:React.ChangeEvent<HTMLInputElement>)=>void;
-    AccountSubmit :(event:React.MouseEvent<HTMLButtonElement>)=>void;
-    isError:{
-        passwordErr:string;
-        nickNameErr:string;
-        emailErr:string;
+type Props = {
+    ChangeData: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    AccountSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    isError: {
+        passwordErr: string;
+        nickNameErr: string;
+        emailErr: string;
     }
 }
 const Account = ({
     ChangeData,
     AccountSubmit,
-    isError}:Props) => {
+    isError }: Props) => {
     return (
         <main className='account-page'>
             <section className='account-section'>
                 <h1 className='title'>회원가입</h1>
                 <div className='account-info-wrapper'>
                     <form className='input-wrapper' encType='multipart/form-data'>
-                        {accountArr.map((item,idx)=>(
+                        {accountArr.map((item, idx) => (
                             <Fragment>
                                 <label htmlFor='avatar'>{item.label}</label>
                                 <input
@@ -50,15 +50,15 @@ const accountArr = [
         name: "avatar",
         id: "avatar",
         type: "file",
-        label:"사진 선택",
+        label: "사진 선택",
         placeholder: ""
     },
     {
-        name:"name",
-        type:"text",
-        minLength:2,
-        maxLength:6,
-        placeholder:"이름"
+        name: "name",
+        type: "text",
+        minLength: 2,
+        maxLength: 6,
+        placeholder: "이름"
     },
     {
         name: "nickName",

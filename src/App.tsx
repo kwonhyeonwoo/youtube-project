@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <HeaderContainer />
-      <SidebarContainer/>
+      <SidebarContainer />
       <Routes>
         <Route path="/" element={<HomeContainer />} />
         <Route path="/login" element={<LoginContainer />} />

@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <main className='home-page'>
             <section className='home-section'>
-                <VideoListsContainer/>
+                <VideoListsContainer />
             </section>
         </main>
     );
