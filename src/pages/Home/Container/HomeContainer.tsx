@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import Home from '../Home';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../store';
+import { AppDispatch, RootState } from '../../../store';
 import { fetchData } from '../../../store/authSlice';
 const HomeContainer = () => {
-    const dispatch = useDispatch();
-    const data = useSelector((state: RootState) => state.api);
+    const dispatch: AppDispatch = useDispatch();
+    const {data,loading,error} = useSelector((state: RootState) => state.getAuth); 
 
-    console.log('data', data)
+    useEffect(()=>{
+        dispatch(fetchData())
+    },[dispatch])
     return (
         <Home />
     );

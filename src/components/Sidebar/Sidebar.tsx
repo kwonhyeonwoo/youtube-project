@@ -62,7 +62,11 @@ const sidebarArr = [
         title: "내 동영상",
         link: "",
     },
-   
+    {
+        svg: <FontAwesomeIcon icon={faFilm} />,
+        title: "영상 업로드",
+        link: "/videos/upload",
+    },
 ]
 
 const subscribeArr = [

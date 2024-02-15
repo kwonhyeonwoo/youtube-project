@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-interface AuthData {
+export interface AuthData {
     avatar: string;
     name: string;
     nickName: string;

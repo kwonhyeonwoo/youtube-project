@@ -7,3 +7,10 @@ export interface Video{
     },
 
 }
+export interface Auth{
+    avatar:string | null;
+    email: string | null;
+    name: string | null;
+    nickName: string | null;
+    _id: string | null;
+}

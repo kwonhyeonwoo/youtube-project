@@ -90,9 +90,18 @@
   font-size: 17px;
   font-weight: 700;
 }
-#root .header > .wrapper > .profile-wrapper > .profile-avatar {
+#root .header > .wrapper > .profile-wrapper > .profile-avatar img {
   width: 40px;
   height: 40px;
-  background-color: red;
   border-radius: 50%;
+  border: 1px solid #AAA;
+}
+#root .header > .wrapper > .profile-wrapper > .profile-avatar .login-btn {
+  width: 120px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
