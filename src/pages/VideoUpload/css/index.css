@@ -11,18 +11,33 @@
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-column-gap: 20px;
-     -moz-column-gap: 20px;
-          column-gap: 20px;
   height: 100%;
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .video {
   width: 620px;
   height: 433px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .video:hover {
+  border: 2px dashed rgba(255, 255, 255, 0.8);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .video:hover > .upload-label svg {
+  color: rgba(255, 255, 255, 0.7);
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .video > .upload-label svg {
-  height: 144px;
+  height: 78px;
   color: rgba(255, 255, 255, 0.5);
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice [type=file] {
@@ -42,7 +57,7 @@
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-title {
   border: 2px solid rgba(255, 255, 255, 0.5);
   width: 350px;
-  height: 33px;
+  height: 44px;
   padding-left: 10px;
   outline: none;
   color: white;
@@ -51,29 +66,30 @@
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-description {
   width: 440px;
-  height: 222px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
+  height: 253px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
   padding: 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: white;
   outline: none;
-  font-size: 14px;
+  font-size: 15px;
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-hashtags {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: white;
   outline: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper .upload-button {
-  width: 152px;
-  height: 39px;
+  width: 350px;
+  height: 50px;
   border-radius: 6px;
+  margin: 0 auto;
   font-weight: 700;
   background-color: white;
 }
