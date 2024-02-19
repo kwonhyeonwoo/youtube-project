@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Account from '../Account';
 import { useNavigate } from 'react-router-dom';
+import useAuthChange from '../../../hooks/useAuthChange';
 type Account = {
     name: string;
     nickName: string;
@@ -10,85 +11,18 @@ type Account = {
 }
 
 const AccountContainer = () => {
-    const [accountData, setAccountData] = useState<Account>({
-        name: "",
-        nickName: "",
-        email: "",
-        password: "",
-        passwordCheck: ""
-    })
-    const [isError, setIsError] = useState({
-        passwordErr: '',
-        nickNameErr: '',
-        emailErr: ''
-    });
-    const [selectedFile, setselectedFile] = useState<File | null>(null);
-    const [viewAvatar, setViewAvatar] = useState<any>(null);
     const navigate = useNavigate();
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value, files, name } = event.target;
-        const fileReader = new FileReader();
 
-        if (name === 'avatar' && files && files.length > 0) {
-            setselectedFile(files[0])
-            fileReader.readAsDataURL(files[0]);
-            return new Promise<void>((resolve) => {
-                fileReader.onload = () => {
-                    setViewAvatar(fileReader.result);
-                    resolve();
-                };
-            });
-        };
-        if (name === 'name') {
-            setAccountData(current => ({
-                ...current,
-                name: value
-            }));
-        };
-        if (name === 'email') {
-            setAccountData(current => ({
-                ...current,
-                email: value
-            }));
-        };
-        if (name === 'nickName') {
-            setAccountData(current => ({
-                ...current,
-                nickName: value
-            }));
-        };
-        if (name === 'password') {
-            setAccountData(current => ({
-                ...current,
-                password: value
-            }));
-        };
-        if (name === 'passwordCheck') {
-            setAccountData(current => ({
-                ...current,
-                passwordCheck: value
-            }));
-        };
-
-        if (accountData.password !== accountData.passwordCheck) {
-            setIsError(current => ({
-                ...current,
-                passwordErr: "비밀번호가 올바르지 않습니다"
-            }))
-        }
-    }
-    const avatarCancel = () => {
-        setViewAvatar(null)
-    }
+    const{authData,selectedFile,viewAvatar, setIsError,isError,onChange} = useAuthChange();
     const AccountSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
             const formData = new FormData();
             formData.append('avatar', selectedFile as Blob);
-            formData.append('email', accountData.email);
-            formData.append('name', accountData.name);
-            formData.append('nickName', accountData.nickName);
-            formData.append('password', accountData.password);
+            formData.append('email', authData.email);
+            formData.append('name', authData.name);
+            formData.append('nickName', authData.nickName);
+            formData.append('password', authData.password);
             console.log('foirmData', formData)
             const response = await fetch('http://localhost:4000/account', {
                 method: "POST",
@@ -104,6 +38,7 @@ const AccountContainer = () => {
                     ...err,
                     nickNameErr: responseData.msg
                 }))
+                console.log('iserror',isError)
                 return responseData;
             }
             if (response.status === 401) {
@@ -122,7 +57,6 @@ const AccountContainer = () => {
         AccountSubmit={AccountSubmit}
         isError={isError}
         viewAvatar={viewAvatar}
-        avatarCancel={avatarCancel}
     />
 };
 

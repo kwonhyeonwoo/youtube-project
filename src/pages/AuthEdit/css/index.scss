@@ -1,0 +1,65 @@
+#root {
+    .auth-edit-page {
+        &>.edit-section {
+            &>.edit-wrapper {
+                padding-top: 55px;
+
+                &>.edit-form {
+                    display: flex;
+                    column-gap: 30px;
+                    align-items: center;
+                    justify-content: center;
+
+                    label {
+                        &>.avatar {
+                            width: 220px;
+                            height: 220px;
+                            border-radius: 50%;
+                        }
+
+                        &>.avatar-img {
+                            width: 220px;
+                            height: 220px;
+                            border-radius: 50%;
+                            border: 2px solid grey;
+                        }
+
+                        &>.no-avatar {
+                            background-color: grey;
+                        }
+
+
+                    }
+
+                    &>.input-wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 22px;
+                        align-items: center;
+                        &>.edit-btn {
+                            width: 253px;
+                            height: 44px;
+                            border: none;
+                            background-color: white;
+                            border-radius: 8px;
+                            font-weight: 700;
+                            font-size:17px;
+                            cursor: pointer;
+                                transition: all .3s ease-in-out;
+                            &:hover{
+                                transition:all .3s ease-in-out;
+                                background-color: rgba(255,255,255,0.8);
+                            }
+                        }
+                        [type="file"] {
+                            display: none;
+                        }
+                    }
+                }
+                &>.err-box{
+                    
+                }
+            }
+        }
+    }
+}

@@ -63,3 +63,10 @@
 #root .profile-page > .profile-section > .user-videos-wrapper > .videos-wrapper > .video-container > .video-info > .video-title {
   font-size: 15px;
 }
+#root .profile-page > .profile-section > .user-videos-wrapper > .videos-wrapper > .no-video {
+  color: white;
+  margin: 0 auto;
+  padding-top: 25px;
+  font-size: 22px;
+  font-weight: 700;
+}

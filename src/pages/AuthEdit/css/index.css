@@ -1,0 +1,64 @@
+#root .auth-edit-page > .edit-section > .edit-wrapper {
+  padding-top: 55px;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form label > .avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form label > .avatar-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form label > .no-avatar {
+  background-color: grey;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form > .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 22px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form > .input-wrapper > .edit-btn {
+  width: 253px;
+  height: 44px;
+  border: none;
+  background-color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 17px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form > .input-wrapper > .edit-btn:hover {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+#root .auth-edit-page > .edit-section > .edit-wrapper > .edit-form > .input-wrapper [type=file] {
+  display: none;
+}

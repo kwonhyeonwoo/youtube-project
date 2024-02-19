@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
 import Login from '../Login';
 import { useNavigate } from 'react-router-dom';
+import useAuthChange from '../../../hooks/useAuthChange';
 
 const LoginContainer = () => {
-    const [nickName, setNickName] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [isError, setIsError] = useState({
-        nickNameErr: "",
-        passwordErr: ""
-    })
     const navigate = useNavigate();
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value, name } = event.target;
-        if (name === 'nickName') {
-            setNickName(value)
-        };
-        if (name === 'password') {
-            setPassword(value)
-        };
-    }
+    const { authData,
+        onChange,
+        isError,
+        setIsError
+    }= useAuthChange();
     const LoginSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
@@ -29,8 +20,8 @@ const LoginContainer = () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    nickName: nickName,
-                    password: password
+                    nickName: authData.nickName,
+                    password: authData.password
                 })
             })
             const responseData = await response.json();

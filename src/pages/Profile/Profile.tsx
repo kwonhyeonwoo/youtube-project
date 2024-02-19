@@ -12,7 +12,6 @@ const Profile = ({
     error,
     loading
 }: Props) => {
-    console.log('data', data)
     return (
         <main className='profile-page'>
             <section className='profile-section'>
@@ -21,14 +20,14 @@ const Profile = ({
                     <div className='user-info'>
                         <div className='user-name'>{data?.name}</div>
                         <div className='user-nickname'>@{data?.nickName}</div>
-                        <div className='info-edit-link'><Link to={`/auth/${data?._id}/edit`}>정보수정 &rarr;</Link></div>
+                        <div className='info-edit-link'><Link to={`/${data?._id}/profile/edit`}>정보수정 &rarr;</Link></div>
                     </div>
                 </div>
 
                 <div className='user-videos-wrapper'>
                     <h2 className='videos-title'>내 비디오</h2>
                     <div className='videos-wrapper'>
-                        {data?.videos?.map((item, idx) => (
+                        {data?.videos && data?.videos?.map((item, idx) => (
                             <div className='video-container' key={idx}>
                                 <video className='video' src={`http://localhost:4000/${item.videoUrl}`} />
                                 <div className='video-info'>
@@ -37,7 +36,9 @@ const Profile = ({
                                     <div className='video-datetime'>{item.dateTime}</div>
                                 </div>
                             </div>
-                        ))}
+                        ))
+                        }
+                        <div className='no-video'>등록 된 비디오가 없습니다</div>
                     </div>
                 </div>
             </section>

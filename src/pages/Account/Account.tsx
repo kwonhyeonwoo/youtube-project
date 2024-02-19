@@ -11,7 +11,6 @@ type Props = {
         nickNameErr: string;
         emailErr: string;
     }
-    avatarCancel: () => void;
     viewAvatar: string;
 }
 const Account = ({
@@ -19,9 +18,7 @@ const Account = ({
     AccountSubmit,
     isError,
     viewAvatar,
-    avatarCancel
 }: Props) => {
-    console.log('view avatar', viewAvatar)
     return (
         <main className='account-page'>
             <section className='account-section'>
