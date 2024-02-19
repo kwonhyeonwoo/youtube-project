@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import "./css/index.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+
 type Props = {
     ChangeData: (event: React.ChangeEvent<HTMLInputElement>) => void;
     AccountSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -8,20 +11,28 @@ type Props = {
         nickNameErr: string;
         emailErr: string;
     }
+    avatarCancel: () => void;
+    viewAvatar: string;
 }
 const Account = ({
     ChangeData,
     AccountSubmit,
-    isError }: Props) => {
+    isError,
+    viewAvatar,
+    avatarCancel
+}: Props) => {
+    console.log('view avatar', viewAvatar)
     return (
         <main className='account-page'>
             <section className='account-section'>
                 <h1 className='title'>회원가입</h1>
                 <div className='account-info-wrapper'>
                     <form className='input-wrapper' encType='multipart/form-data'>
+                        <label className='profile-img-choice' htmlFor="avatar">
+                            {viewAvatar ? <img src={viewAvatar} /> : <FontAwesomeIcon icon={faCamera} />}
+                        </label>
                         {accountArr.map((item, idx) => (
                             <Fragment>
-                                <label htmlFor='avatar'>{item.label}</label>
                                 <input
                                     onChange={ChangeData}
                                     id={item.id}
@@ -35,6 +46,8 @@ const Account = ({
                             </Fragment>
                         ))}
                         <button className='account-button' onClick={AccountSubmit}>회원가입</button>
+                        {isError.emailErr && <div className='err-msg'>{isError.emailErr}</div>}
+                        {isError.nickNameErr && <div className='err-msg'>{isError.nickNameErr}</div>}
                     </form>
                 </div>
             </section>
@@ -50,7 +63,6 @@ const accountArr = [
         name: "avatar",
         id: "avatar",
         type: "file",
-        label: "사진 선택",
         placeholder: ""
     },
     {

@@ -1,16 +1,17 @@
 #root {
-    .account-page {
-        &>.account-section {
+    .login-page {
+        &>.login-section {
             display: flex;
             flex-direction: column;
             align-items: center;
+            row-gap: 20px;
 
             &>.title {
                 font-size: 29px;
                 font-weight: 700;
             }
 
-            &>.account-info-wrapper {
+            &>.login-info-wrapper {
                 &>.input-wrapper {
                     display: flex;
                     flex-direction: column;
@@ -32,11 +33,8 @@
 
                     }
 
-                    // [type="file"] {
-                    //     display: none;
-                    // }
 
-                    &>.account-button {
+                    &>.login-button {
                         background-color: white;
                         width: 222px;
                         height: 44px;
@@ -47,6 +45,30 @@
                     }
                 }
 
+                &>.account-link {
+                    margin-top: 22px;
+                    text-align: center;
+                    font-weight: 700;
+
+                    a {
+                        color: white;
+                        font-size: 20px;
+                        transition: all .3s ease-in-out;
+
+                        &:hover {
+                            color: brown;
+                            transition: all .3s ease-in-out;
+                        }
+                    }
+                }
+
+                &>.err-msg {
+                    color: red;
+                    font-weight: 800;
+                    text-align: center;
+                    margin-top: 22px;
+                    font-size: 17px;
+                }
             }
         }
     }

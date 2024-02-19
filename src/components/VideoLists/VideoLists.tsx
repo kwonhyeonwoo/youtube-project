@@ -1,24 +1,25 @@
-import { Video } from "../../config/interface";
+import { VideosData } from "../../store/videosSlice";
 import "./css/index.css";
-type Props={
-    data:Video[];
+type Props = {
+    videos: VideosData[] | null;
 }
-const VideoLists = ({data}:Props) =>{
-    return(
+const VideoLists = ({ videos }: Props) => {
+    return (
         <div className="video-lists-wrapper">
             <div className="video-detail-wrapper">
-                {data.map((item,idx)=>(
+                {videos?.map((item, idx) => (
                     <div className="detail-box" key={idx}>
-                        <div className="video" />
+                        <img className="video" src={`http://localhost:4000/${item.videoUrl}`} />
                         <div className="content-wrapper">
                             <div className="profile-wrapper">
-                                <div className="profile-avatar"/>
+                                <img className="profile-avatar" src={`http://localhost:4000/${item.owner.avatar}`} />
                                 <div className="title">{item.title}</div>
                             </div>
-                            <div className="source">{item.source}</div>
+                            <div className="source">{ }</div>
                             <div className="meta-wrapper">
-                                <div>조회수 {item.meta.view}회</div>
-                                <div> {item.meta.day}일 전</div>
+                                {/* 조회수, 날짜데이터 작업해야함 */}
+                                <div>조회수 {item.meta.views}회</div>
+                                <div> { }일전</div>
                             </div>
                         </div>
                     </div>

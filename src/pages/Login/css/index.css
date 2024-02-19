@@ -1,4 +1,4 @@
-#root .account-page > .account-section {
+#root .login-page > .login-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,12 +9,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  row-gap: 20px;
 }
-#root .account-page > .account-section > .title {
+#root .login-page > .login-section > .title {
   font-size: 29px;
   font-weight: 700;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,22 +25,22 @@
           flex-direction: column;
   row-gap: 20px;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper input::-webkit-input-placeholder {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper input::-webkit-input-placeholder {
   color: white;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper input::-moz-placeholder {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper input::-moz-placeholder {
   color: white;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper input:-ms-input-placeholder {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper input:-ms-input-placeholder {
   color: white;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper input::-ms-input-placeholder {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper input::-ms-input-placeholder {
   color: white;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper input::placeholder {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper input::placeholder {
   color: white;
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > input {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper > input {
   outline: none;
   width: 350px;
   height: 50px;
@@ -50,7 +51,7 @@
           box-sizing: border-box;
   border: 1px solid rgba(170, 170, 170, 0.6666666667);
 }
-#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .account-button {
+#root .login-page > .login-section > .login-info-wrapper > .input-wrapper > .login-button {
   background-color: white;
   width: 222px;
   height: 44px;
@@ -58,4 +59,27 @@
   color: black;
   font-weight: 700;
   font-size: 19px;
+}
+#root .login-page > .login-section > .login-info-wrapper > .account-link {
+  margin-top: 22px;
+  text-align: center;
+  font-weight: 700;
+}
+#root .login-page > .login-section > .login-info-wrapper > .account-link a {
+  color: white;
+  font-size: 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#root .login-page > .login-section > .login-info-wrapper > .account-link a:hover {
+  color: brown;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#root .login-page > .login-section > .login-info-wrapper > .err-msg {
+  color: red;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 22px;
+  font-size: 17px;
 }

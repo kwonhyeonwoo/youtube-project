@@ -2,23 +2,24 @@ import React from 'react';
 import "./css/index.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Auth } from '../../config/interface';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { AuthData } from '../../store/authSlice';
 import { Link } from 'react-router-dom';
 
-type Props ={
-    data: Auth | null;
+type Props = {
+    data: AuthData | null;
+
 }
-const Header = ({data}:Props) => {
+const Header = ({ data }: Props) => {
     return (
         <header className='header'>
             <div className='wrapper'>
                 <div className='logo-wrapper'>
-                    <FontAwesomeIcon className='menu-svg' icon={faBars} />
                     <div className='logo'>
-                        <FontAwesomeIcon className='youtube-logo' icon={faYoutube} />
-                        <div className='title'>YouTube</div>
+                        <Link to={'/'}>
+                            <FontAwesomeIcon className='youtube-logo' icon={faYoutube} />
+                            <div className='title'>YouTube</div>
+                        </Link>
                     </div>
 
                 </div>
@@ -29,7 +30,9 @@ const Header = ({data}:Props) => {
                 <div className='profile-wrapper'>
                     <div className='user-nmae'>{data?.nickName}</div>
                     <div className='profile-avatar'>
-                        {data?.avatar ? <img src={`http://localhost:4000/${data?.avatar}`} /> :
+                        {data?.avatar ? <Link to={`/${data._id}/profile`}>
+                            <img src={`http://localhost:4000/${data?.avatar}`} />
+                        </Link> :
                             <Link to='/login'>
                                 <button className='login-btn'>로그인</button>
                             </Link>

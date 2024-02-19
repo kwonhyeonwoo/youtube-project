@@ -1,0 +1,65 @@
+#root .profile-page > .profile-section > .user-profile-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
+  padding-left: 150px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#root .profile-page > .profile-section > .user-profile-wrapper > .user-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+#root .profile-page > .profile-section > .user-profile-wrapper > .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 10px;
+}
+#root .profile-page > .profile-section > .user-profile-wrapper > .user-info > .user-name {
+  font-size: 30px;
+  font-weight: 700;
+}
+#root .profile-page > .profile-section > .user-profile-wrapper > .user-info > .user-nickname {
+  opacity: 0.6;
+  font-weight: 700;
+}
+#root .profile-page > .profile-section > .user-profile-wrapper > .user-info > .info-edit-link a {
+  opacity: 0.6;
+  color: white;
+  font-weight: 700;
+}
+#root .profile-page > .profile-section > .user-videos-wrapper {
+  padding-top: 22px;
+  padding-left: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#root .profile-page > .profile-section > .user-videos-wrapper > .videos-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+#root .profile-page > .profile-section > .user-videos-wrapper > .videos-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  -webkit-column-gap: 12px;
+     -moz-column-gap: 12px;
+          column-gap: 12px;
+}
+#root .profile-page > .profile-section > .user-videos-wrapper > .videos-wrapper > .video-container > .video {
+  height: 174px;
+  border-radius: 15px;
+}
+#root .profile-page > .profile-section > .user-videos-wrapper > .videos-wrapper > .video-container > .video-info > .video-title {
+  font-size: 15px;
+}

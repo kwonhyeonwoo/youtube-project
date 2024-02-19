@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import VideoUpload from "../VideoUpload"
-type Data ={
-    title:string;
-    description:string;
-    hashtags:string[];
-}
-const VideoUploadContainer = ()=>{
+
+const VideoUploadContainer = () => {
     const [videoUrl, setVideoUrl] = useState<File | null>(null);
     const [videoData, setVideoData] = useState({
-        title:"",
-        description:"",
-        hashtags:[""],
+        title: "",
+        description: "",
+        hashtags: [""],
     })
-    const VideoDataChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
-        const {name, value,files}=event.target;
-        if(name === 'title'){
-            setVideoData(current=>({
+    const VideoDataChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, files } = event.target;
+        if (name === 'title') {
+            setVideoData(current => ({
                 ...current,
-                title:value
+                title: value
             }));
         }
         if (name === 'description') {
@@ -36,24 +32,31 @@ const VideoUploadContainer = ()=>{
             setVideoUrl(files[0]);
         }
     }
-    const VideoUploadSubmit =async (event: React.MouseEvent<HTMLButtonElement>)=>{
+    const VideoUploadSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append('title', videoData.title)
         formData.append('description', videoData.description)
-        videoData.hashtags.forEach((item,idx)=>{
-            formData.append(`hashtags[${idx}]`,item)
+        videoData.hashtags.forEach((item, idx) => {
+            formData.append(`hashtags[${idx}]`, item)
         })
-        formData.append('videoUrl',videoUrl as Blob);
-        const response = await fetch("http://localhost:4000/video/upload",{
-            method:"POST",
-            body:formData
+        formData.append('videoUrl', videoUrl as Blob);
+        const response = await fetch("http://localhost:4000/video/upload", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+            body: formData
         })
         const responseData = await response.json();
-        console.log('responseData',responseData);
+        console.log('responseData', responseData);
     }
-    return(
-        <VideoUpload/>
+    return (
+        <VideoUpload
+            VideoSubmit={VideoUploadSubmit}
+            VideoChange={VideoDataChange}
+        />
     )
 };
 

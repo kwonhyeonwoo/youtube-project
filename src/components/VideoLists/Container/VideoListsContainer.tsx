@@ -1,127 +1,21 @@
+import { useDispatch, useSelector } from "react-redux"
+import { Video } from "../../../config/interface"
 import VideoLists from "../VideoLists"
+import { AppDispatch, RootState } from "../../../store"
+import { useEffect } from "react"
+import { videosData } from "../../../store/videosSlice"
+type Props = {
 
-const VideoListsContainer= ()=>{
-    const videoData = [
-        {
-            videoUrl:",,,,,",
-            title:"드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?1111111111111",
-            source:"이기야 당",
-            meta:{
-                view:"33",
-                day:"2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "인생은 무엇인가....?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-        {
-            videoUrl: ",,,,,",
-            title: "드디어 한국이 핵 개발 도입! 핵 전쟁 가는가?",
-            source: "이기야 당",
-            meta: {
-                view: "33",
-                day: "2"
-            }
-        },
-    ]
-    return(
-        <VideoLists data={videoData }/>
+}
+const VideoListsContainer = ({ }: Props) => {
+    const dispatch: AppDispatch = useDispatch();
+    const { data, error, loading } = useSelector((state: RootState) => state.getVideos);
+    useEffect(() => {
+        dispatch(videosData());
+    }, [dispatch]);
+    console.log('data', data)
+    return (
+        <VideoLists videos={data} />
     )
 }
 

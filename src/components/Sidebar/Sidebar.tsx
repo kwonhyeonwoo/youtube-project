@@ -12,7 +12,7 @@ const Sidebar = () => {
                     <div className='menu-wrapper'>
                         <div className='title'>나 {">"}</div>
                         <ul className='menu-lists'>
-                            {sidebarArr.map((item,idx)=>(
+                            {sidebarArr.map((item, idx) => (
                                 <li className='menu-list' key={idx}>
                                     {item.svg}
                                     <Link to={item.link}>
@@ -50,28 +50,29 @@ const sidebarArr = [
             <FontAwesomeIcon icon={faUser} />
         </div>,
         title: "내 채널",
-        link: "",
+        link: "/chanel",
     },
     {
-        svg:<FontAwesomeIcon icon={faHeart} />,
+        svg: <FontAwesomeIcon icon={faHeart} />,
         title: "좋아요 표시한 동영상",
-        link: "/",
+        link: "/video/likes",
     },
     {
         svg: <FontAwesomeIcon icon={faFilm} />,
         title: "내 동영상",
-        link: "",
+        link: "/:id/profile",
     },
     {
         svg: <FontAwesomeIcon icon={faFilm} />,
         title: "영상 업로드",
-        link: "/videos/upload",
+        link: "/video/upload",
     },
 ]
 
+// 임시 데이터
 const subscribeArr = [
     {
-        svg:<div className='subscribe-profile'/>,
+        svg: <div className='subscribe-profile' />,
         title: "아요커플",
         link: "",
     },
@@ -81,17 +82,17 @@ const subscribeArr = [
         link: "/",
     },
     {
-        svg: <div className='subscribe-profile'/>,
+        svg: <div className='subscribe-profile' />,
         title: "푸들커플",
         link: "",
     },
     {
-        svg: <div className='subscribe-profile'/>,
+        svg: <div className='subscribe-profile' />,
         title: "1급 비밀",
         link: "",
     },
     {
-        svg: <div className='subscribe-profile'/>,
+        svg: <div className='subscribe-profile' />,
         title: "생활코딩",
         link: "",
     },

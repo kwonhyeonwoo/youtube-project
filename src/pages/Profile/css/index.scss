@@ -1,0 +1,74 @@
+#root {
+    .profile-page {
+        &>.profile-section {
+            &>.user-profile-wrapper {
+                display: flex;
+                column-gap: 20px;
+                padding-left: 150px;
+                padding-bottom: 32px;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+                box-sizing: border-box;
+
+                &>.user-avatar {
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 50%;
+                }
+
+                &>.user-info {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 10px;
+
+                    &>.user-name {
+                        font-size: 30px;
+                        font-weight: 700;
+                    }
+
+                    &>.user-nickname {
+                        opacity: 0.6;
+                        font-weight: 700;
+                    }
+
+                    &>.info-edit-link {
+                        a {
+                            opacity: 0.6;
+                            color: white;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
+            &>.user-videos-wrapper {
+                padding-top: 22px;
+                padding-left: 30px;
+                box-sizing: border-box;
+
+                &>.videos-title {
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+
+                &>.videos-wrapper {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    column-gap: 12px;
+
+                    &>.video-container {
+                        &>.video {
+                            height: 174px;
+                            border-radius: 15px;
+                        }
+
+                        &>.video-info {
+                            &>.video-title {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

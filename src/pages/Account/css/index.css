@@ -23,6 +23,33 @@
       -ms-flex-direction: column;
           flex-direction: column;
   row-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .profile-img-choice {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: 11px;
+}
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .profile-img-choice img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .profile-img-choice svg {
+  font-size: 22px;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  color: white;
+}
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .img-cancel {
+  cursor: pointer;
+  font-weight: 700;
 }
 #root .account-page > .account-section > .account-info-wrapper > .input-wrapper input::-webkit-input-placeholder {
   color: white;
@@ -50,6 +77,9 @@
           box-sizing: border-box;
   border: 1px solid rgba(170, 170, 170, 0.6666666667);
 }
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper [type=file] {
+  display: none;
+}
 #root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .account-button {
   background-color: white;
   width: 222px;
@@ -58,4 +88,8 @@
   color: black;
   font-weight: 700;
   font-size: 19px;
+}
+#root .account-page > .account-section > .account-info-wrapper > .input-wrapper > .err-msg {
+  color: red;
+  font-weight: 800;
 }

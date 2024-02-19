@@ -6,6 +6,19 @@ export interface AuthData {
     nickName: string;
     email: string;
     _id: string;
+    videos?: [
+        {
+            videoUrl: string;
+            title: string;
+            description: string;
+            hashtags: [string];
+            meta: {
+                views: string,
+            };
+            dateTime: string;
+            owner: string;
+        }
+    ]
 };
 
 export const fetchData = createAsyncThunk<AuthData, void>(
@@ -35,6 +48,19 @@ interface ApiState {
     loading: boolean;
     error: string | null;
     id: string | null;
+    videos: [
+        {
+            videoUrl: string | null,
+            title: string | null;
+            description: string | null;
+            hashtags: [string | null];
+            meta: {
+                views: string | null,
+            };
+            dateTime: string | null;
+            owner: string | null;
+        }
+    ]
 }
 
 const initialState: ApiState = {
@@ -42,6 +68,19 @@ const initialState: ApiState = {
     loading: false,
     error: null,
     id: null,
+    videos: [
+        {
+            videoUrl: null,
+            title: null,
+            description: null,
+            hashtags: [null],
+            meta: {
+                views: null,
+            },
+            dateTime: null,
+            owner: null,
+        }
+    ]
 };
 export const apiSlice = createSlice({
     name: 'data',

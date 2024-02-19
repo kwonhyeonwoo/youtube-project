@@ -37,7 +37,7 @@
 #root .header > .wrapper > .logo-wrapper > .menu-svg:hover {
   color: rgba(255, 255, 255, 0.5);
 }
-#root .header > .wrapper > .logo-wrapper > .logo {
+#root .header > .wrapper > .logo-wrapper > .logo a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,12 +45,12 @@
       -ms-flex-align: center;
           align-items: center;
 }
-#root .header > .wrapper > .logo-wrapper > .logo > .youtube-logo {
+#root .header > .wrapper > .logo-wrapper > .logo a > .youtube-logo {
   width: 38px;
   height: 38px;
   color: red;
 }
-#root .header > .wrapper > .logo-wrapper > .logo > .title {
+#root .header > .wrapper > .logo-wrapper > .logo a > .title {
   font-size: 17px;
   font-weight: 700;
   color: white;

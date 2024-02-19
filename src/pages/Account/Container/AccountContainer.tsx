@@ -8,6 +8,7 @@ type Account = {
     password: string;
     passwordCheck: string;
 }
+
 const AccountContainer = () => {
     const [accountData, setAccountData] = useState<Account>({
         name: "",
@@ -17,18 +18,26 @@ const AccountContainer = () => {
         passwordCheck: ""
     })
     const [isError, setIsError] = useState({
-        passwordErr: "",
-        nickNameErr: "",
-        emailErr: "",
+        passwordErr: '',
+        nickNameErr: '',
+        emailErr: ''
     });
     const [selectedFile, setselectedFile] = useState<File | null>(null);
+    const [viewAvatar, setViewAvatar] = useState<any>(null);
     const navigate = useNavigate();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value, files, name } = event.target;
+        const fileReader = new FileReader();
+
         if (name === 'avatar' && files && files.length > 0) {
             setselectedFile(files[0])
-            console.log('files', selectedFile)
-
+            fileReader.readAsDataURL(files[0]);
+            return new Promise<void>((resolve) => {
+                fileReader.onload = () => {
+                    setViewAvatar(fileReader.result);
+                    resolve();
+                };
+            });
         };
         if (name === 'name') {
             setAccountData(current => ({
@@ -60,12 +69,16 @@ const AccountContainer = () => {
                 passwordCheck: value
             }));
         };
+
         if (accountData.password !== accountData.passwordCheck) {
             setIsError(current => ({
                 ...current,
                 passwordErr: "비밀번호가 올바르지 않습니다"
             }))
         }
+    }
+    const avatarCancel = () => {
+        setViewAvatar(null)
     }
     const AccountSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -87,10 +100,19 @@ const AccountContainer = () => {
                 navigate('/login')
             }
             if (response.status === 400) {
-                console.log('error', responseData);
+                setIsError(err => ({
+                    ...err,
+                    nickNameErr: responseData.msg
+                }))
                 return responseData;
             }
-
+            if (response.status === 401) {
+                setIsError(err => ({
+                    ...err,
+                    emailErr: responseData.msg
+                }))
+                return responseData;
+            }
         } catch (error) {
             console.log('server error', error)
         }
@@ -99,6 +121,8 @@ const AccountContainer = () => {
         ChangeData={onChange}
         AccountSubmit={AccountSubmit}
         isError={isError}
+        viewAvatar={viewAvatar}
+        avatarCancel={avatarCancel}
     />
 };
 

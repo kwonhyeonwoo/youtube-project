@@ -21,7 +21,7 @@ function App() {
         <Route path="/:id/profile" element={<ProfileContainer />} />
 
         {/* video routers */}
-        <Route path='/video/*' element={<VideoRoutes/>}/>
+        <Route path='/video/*' element={<VideoRoutes />} />
       </Routes>
     </>
 

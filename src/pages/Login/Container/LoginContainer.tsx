@@ -5,41 +5,52 @@ import { useNavigate } from 'react-router-dom';
 const LoginContainer = () => {
     const [nickName, setNickName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [isError, setIsError] = useState({
+        nickNameErr: "",
+        passwordErr: ""
+    })
     const navigate = useNavigate();
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
-        const {value, name}= event.target;
-        if(name === 'nickName'){
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value, name } = event.target;
+        if (name === 'nickName') {
             setNickName(value)
         };
-        if(name === 'password'){
+        if (name === 'password') {
             setPassword(value)
         };
-
     }
     const LoginSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
-            
+
             const response = await fetch('http://localhost:4000/login', {
                 method: "POST",
-                headers:{
-                    "Content-Type":"application/json"
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({
-                    nickName:nickName,
-                    password:password
+                body: JSON.stringify({
+                    nickName: nickName,
+                    password: password
                 })
             })
             const responseData = await response.json();
             if (response.status === 200) {
-                localStorage.setItem('token',responseData.token);
+                localStorage.setItem('token', responseData.token);
                 navigate('/')
             }
             if (response.status === 400) {
-                console.log('error', responseData);
-                return responseData;
-            }
 
+                return setIsError(err => ({
+                    ...err,
+                    nickNameErr: responseData.msg
+                }))
+            }
+            if (response.status === 401) {
+                return setIsError(err => ({
+                    ...err,
+                    passwordErr: responseData.msg
+                }))
+            }
         } catch (error) {
             console.log('server error', error)
         }
@@ -48,6 +59,7 @@ const LoginContainer = () => {
         <Login
             ChangeData={onChange}
             LoginSubmit={LoginSubmit}
+            isError={isError}
         />
     );
 };
