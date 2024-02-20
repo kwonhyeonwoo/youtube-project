@@ -39,31 +39,31 @@ const useAuthChange = ()=>{
         if (name === 'name') {
             setAuthData(current => ({
                 ...current,
-                name: value
+                [name]: value
             }));
         };
         if (name === 'email') {
             setAuthData(current => ({
                 ...current,
-                email: value
+                [name]: value
             }));
         };
         if (name === 'nickName') {
             setAuthData(current => ({
                 ...current,
-                nickName: value
+                [name]: value
             }));
         };
         if (name === 'password') {
             setAuthData(current => ({
                 ...current,
-                password: value
+                [name]: value
             }));
         };
         if (name === 'passwordCheck') {
             setAuthData(current => ({
                 ...current,
-                passwordCheck: value
+                [name]: value
             }));
         };
 

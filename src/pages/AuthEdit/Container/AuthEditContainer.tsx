@@ -21,9 +21,9 @@ const AuthEditContainer = () => {
             const token = localStorage.getItem('token');
             const formData = new FormData();
             formData.append('avatar', selectedFile as Blob);
-            formData.append('email', authData.email ? authData.email : (data?.email || ""));
-            formData.append('name', authData.name ? authData.name : (data?.name || ""));
-            formData.append('nickName', authData.nickName ? authData.nickName : (data?.nickName || ""));
+            formData.append('email', authData.email );
+            formData.append('name', authData.name);
+            formData.append('nickName', authData.nickName);
             console.log('form data', formData)
             const response = await fetch('http://localhost:4000/auth/edit', {
                 method: "POST",

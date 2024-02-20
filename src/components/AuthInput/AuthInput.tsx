@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import "./css/index.css";
+import { AuthData } from "../../store/authSlice";
 
 type Props ={
     input:{
@@ -11,11 +12,12 @@ type Props ={
         maxLength?:number;
         value?:string;
     }[];
+    data? : AuthData | null;
     ChangeData: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 }
 
-const AuthInput = ({input,ChangeData}:Props)=>{
+const AuthInput = ({ input, ChangeData, data }:Props)=>{
     return(
        <Fragment>
             {input.map(({ id, name, type, required, maxLength, minLength,value }, idx) => (

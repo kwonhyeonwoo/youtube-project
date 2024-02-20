@@ -57,7 +57,7 @@ const AuthEdit = ({ data, error, loading, AuthEditSubmit, isError, ChangeData }:
                             }
                         </label>
                         <div className="input-wrapper">
-                            <AuthInput input={userInfoArr} ChangeData={ChangeData} />
+                            <AuthInput input={userInfoArr} ChangeData={ChangeData}  data={data}/>
                             <button onClick={AuthEditSubmit} className="edit-btn">수정하기</button>
                         </div>
                     </form>
