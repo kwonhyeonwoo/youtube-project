@@ -5,7 +5,6 @@ import useAuthChange from "../../../hooks/useAuthChange";
 import { faCircleH } from "@fortawesome/free-solid-svg-icons";
 
 const AuthEditContainer = () => {
-    const dispatch = useDispatch<AppDispatch>();
     const { data, error, loading } = useSelector((state: RootState) => state.getAuth);
     const {
         authData,
@@ -24,6 +23,7 @@ const AuthEditContainer = () => {
             formData.append('email', authData.email );
             formData.append('name', authData.name);
             formData.append('nickName', authData.nickName);
+            console.log('sele',selectedFile)
             console.log('form data', formData)
             const response = await fetch('http://localhost:4000/auth/edit', {
                 method: "POST",

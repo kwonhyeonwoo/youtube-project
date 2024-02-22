@@ -20,6 +20,7 @@ const useAuthChange = ()=>{
         nickNameErr: '',
         emailErr: ''
     });
+
     const [selectedFile, setselectedFile] = useState<File | null>(null);
     const [viewAvatar, setViewAvatar] = useState<any>(null);
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,30 +42,35 @@ const useAuthChange = ()=>{
                 ...current,
                 [name]: value
             }));
+
         };
         if (name === 'email') {
             setAuthData(current => ({
                 ...current,
                 [name]: value
             }));
+
         };
         if (name === 'nickName') {
             setAuthData(current => ({
                 ...current,
                 [name]: value
             }));
+
         };
         if (name === 'password') {
             setAuthData(current => ({
                 ...current,
                 [name]: value
             }));
+
         };
         if (name === 'passwordCheck') {
             setAuthData(current => ({
                 ...current,
                 [name]: value
             }));
+
         };
 
         if (authData.password !== authData.passwordCheck) {
@@ -72,6 +78,7 @@ const useAuthChange = ()=>{
                 ...current,
                 passwordErr: "비밀번호가 올바르지 않습니다"
             }))
+
         }
     }
     return{
