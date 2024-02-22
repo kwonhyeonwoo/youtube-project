@@ -1,0 +1,51 @@
+#root{
+    .watch-video-page{
+        &>.watch-video-section{
+            &>.video-wrapper{
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+                &>.video {
+                    video{
+                        width: 100%;
+                        max-width: 1280px;
+                        height:400px;
+                    }
+                    &>.video-controller{
+                        &>.video-play{
+                            border:1px solid red;
+                            color:white;
+                        }
+                        &>.video-mute{
+                            color:white;
+                        }
+                    &>.range{
+                    }
+                    }
+                }
+                &>.video-owner{
+                    display: flex;
+                    align-items: center;
+                    column-gap: 11px;
+                    img{
+                        width: 40px;
+                        height:40px;
+                        border-radius: 50%;
+                    }
+                    &>.owner-nickname{
+                        font-weight: 700;
+                    }
+                }
+                &>.video-info{
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 5px;
+                    &>.video-hashtags{
+                        color:rgba(255,255,255,0.5);
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+#root .watch-video-page > .watch-video-section > .video-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 10px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video video {
+  width: 100%;
+  max-width: 1280px;
+  height: 400px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-play {
+  border: 1px solid red;
+  color: white;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute {
+  color: white;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 11px;
+     -moz-column-gap: 11px;
+          column-gap: 11px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner > .owner-nickname {
+  font-weight: 700;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 5px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-hashtags {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}

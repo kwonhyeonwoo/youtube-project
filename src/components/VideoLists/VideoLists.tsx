@@ -1,15 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { VideosData } from "../../store/videosSlice";
 import "./css/index.css";
 type Props = {
     videos: VideosData[] | null;
 }
 const VideoLists = ({ videos }: Props) => {
+    const navigate = useNavigate();
     return (
         <div className="video-lists-wrapper">
             <div className="video-detail-wrapper">
                 {videos?.map((item, idx) => (
-                    <div className="detail-box" key={idx}>
-                        <img className="video" src={`http://localhost:4000/${item.videoUrl}`} />
+                    <div className="detail-box" key={idx} onClick={() => navigate(`/video/${item._id}`, { state: { value:item } })}>
+                        <video className="video" src={`http://localhost:4000/${item.videoUrl}`} />
                         <div className="content-wrapper">
                             <div className="profile-wrapper">
                                 <img className="profile-avatar" src={`http://localhost:4000/${item.owner.avatar}`} />

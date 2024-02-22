@@ -13,7 +13,6 @@ const VideoListsContainer = ({ }: Props) => {
     useEffect(() => {
         dispatch(videosData());
     }, [dispatch]);
-    console.log('data', data)
     return (
         <VideoLists videos={data} />
     )

@@ -12,6 +12,8 @@ export interface AuthData {
             title: string;
             description: string;
             hashtags: [string];
+            _id: string;
+
             meta: {
                 views: string,
             };

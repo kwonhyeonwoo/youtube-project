@@ -15,6 +15,7 @@ export interface VideosData {
         name: string;
         nickName: string;
     }
+    _id:string;
 }
 
 export const videosData = createAsyncThunk<VideosData[], void>(
