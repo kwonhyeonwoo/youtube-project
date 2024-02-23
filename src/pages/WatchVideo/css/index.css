@@ -8,17 +8,53 @@
           flex-direction: column;
   row-gap: 10px;
 }
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video {
+  position: relative;
+  width: 100%;
+}
 #root .watch-video-page > .watch-video-section > .video-wrapper > .video video {
   width: 100%;
-  max-width: 1280px;
-  height: 400px;
-}
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-play {
+  height: 100%;
   border: 1px solid red;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller {
+  width: 50%;
+  height: 33px;
+  position: absolute;
+  bottom: 17px;
+  left: 18%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-column-gap: 15px;
+     -moz-column-gap: 15px;
+          column-gap: 15px;
+  padding: 0px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-play-btn {
+  font-size: 18px;
   color: white;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute svg {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute svg path {
   color: white;
+  font-size: 18px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-timeline {
+  width: 100%;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .screen-btn {
+  color: white;
+  background-color: transparent;
 }
 #root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner {
   display: -webkit-box;

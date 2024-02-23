@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { AuthData } from "../../store/authSlice";
 import { Link, useLocation, useParams } from "react-router-dom";
 import "./css/index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faExpand, faVolumeLow, faPause } from '@fortawesome/free-solid-svg-icons';
 
 
 type Props = {
@@ -32,19 +34,18 @@ const WatchVideo = ({
     const videoRef = useRef<HTMLVideoElement>(null);
     const rangeRef = useRef<HTMLInputElement>(null);
     const videoContainerRef = useRef<HTMLDivElement>(null);
+    const [videoPlaying, setVideoPlaying] = useState<boolean>(false);
     const [videoCurrentTime, setVideoCurrentTime] = useState<number | string>("00:00:00");
     const [videoTotalTime, setVideoTotalTime] = useState<number | string>(0)
     const [videoMaxTime, setVideoMaxTime] = useState<number>(0);
-    const [videoBtn, setVideoBtn] = useState<string>('play');
     const videoClickHandler = () => {
         if (videoRef.current) {
             if (videoRef.current.paused) {
-                setVideoBtn('stop')
                 setVideoCurrentTime(videoRef.current?.currentTime);
+                setVideoPlaying(true)
                 videoRef.current.play();
             } else {
-                setVideoBtn('play')
-
+                setVideoPlaying(false)
                 videoRef.current.pause();
             }
         }
@@ -97,24 +98,31 @@ const WatchVideo = ({
     const videoVolumnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log('volumne', event.target.value);
     }
-    console.log('first',videoTotalTime)
     return (
         <main className="watch-video-page">
             <section className="watch-video-section">
                 <div className="video-wrapper">
                     <div className="video" ref={videoContainerRef}>
-                        <video controls muted ref={videoRef} src={`http://localhost:4000/${videoUrl}`} />
+                        <video  muted ref={videoRef} src={`http://localhost:4000/${videoUrl}`} />
                         <div className="video-controller">
-                            <button className="video-play"
+                            <button 
+                                className="video-play-btn"
                                 onClick={videoClickHandler}
                             >
-                                {videoBtn}
+                                {videoPlaying ? <FontAwesomeIcon icon={faPause} /> :<FontAwesomeIcon icon={faPlay} />  }
+                               
                             </button>
-                            <button className="video-mute" onClick={videoMutedClick}>mute</button>
+                            <button className="video-mute" onClick={videoMutedClick}>
+                                <FontAwesomeIcon icon={faVolumeLow} />
+                            </button>
                             <input ref={rangeRef} onChange={videoVolumnChange} type="range" step={0.1} min={0} max={1} className="range" />
-                            <input type="range" onChange={videoChange} step={1} value={videoRef.current?.currentTime} min={0} max={videoMaxTime}  />
-                            <button style={{color:"white"}} onClick={FullScreenClick}>Full screen</button>
-                            <button onClick={ExitFullscreen} >exist screen</button>
+                            <input type="range" className="video-timeline" onChange={videoChange} step={1} value={videoRef.current?.currentTime} min={0} max={videoMaxTime}  />
+                            <button className="screen-btn" onClick={FullScreenClick}>
+                                <FontAwesomeIcon style={{ backgroundColor: 'transparent' }} icon={faExpand} />
+                            </button>
+
+                            <div className="screen-btn-wrapper">
+                            </div>
                         </div>
                     </div>
                     <Link to={`/auth/${_id}`} className="video-owner">

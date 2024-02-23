@@ -1,47 +1,86 @@
-#root{
-    .watch-video-page{
-        &>.watch-video-section{
-            &>.video-wrapper{
+#root {
+    .watch-video-page {
+        &>.watch-video-section {
+            &>.video-wrapper {
                 display: flex;
                 flex-direction: column;
                 row-gap: 10px;
+
                 &>.video {
-                    video{
+                    position: relative;
+                    width: 100%;
+                    video {
                         width: 100%;
-                        max-width: 1280px;
-                        height:400px;
+                        height: 100%;
+                        border:1px solid red;
                     }
-                    &>.video-controller{
-                        &>.video-play{
-                            border:1px solid red;
+
+                    &>.video-controller {
+                        width: 50%;
+                        height:33px;
+                        position: absolute;
+                        bottom:17px;       
+                        left:18%;                 
+                        display: flex;
+                        align-items: center;
+                        border-radius:20px;
+                        background-color: rgba(0,0,0,0.7);
+                        column-gap:15px;
+                        padding:0px 10px;
+                        box-sizing: border-box;
+                        &>.video-play-btn {
+                            font-size: 18px;
                             color:white;
+                            svg{
+                            }
                         }
-                        &>.video-mute{
+
+                        &>.video-mute {
+                           svg{
+                                background-color: rgba(0,0,0,0.7);
+                        }
+                        svg path{
                             color:white;
+                            font-size: 18px;
                         }
-                    &>.range{
-                    }
+                        }
+
+                        &>.video-timeline {
+                            width: 100%;
+                        }
+                       
+                           
+                            &>.screen-btn{
+                                color:white;
+                                background-color: transparent;
+                            }
+                        
                     }
                 }
-                &>.video-owner{
+
+                &>.video-owner {
                     display: flex;
                     align-items: center;
                     column-gap: 11px;
-                    img{
+
+                    img {
                         width: 40px;
-                        height:40px;
+                        height: 40px;
                         border-radius: 50%;
                     }
-                    &>.owner-nickname{
+
+                    &>.owner-nickname {
                         font-weight: 700;
                     }
                 }
-                &>.video-info{
+
+                &>.video-info {
                     display: flex;
                     flex-direction: column;
                     row-gap: 5px;
-                    &>.video-hashtags{
-                        color:rgba(255,255,255,0.5);
+
+                    &>.video-hashtags {
+                        color: rgba(255, 255, 255, 0.5);
                         font-weight: 700;
                     }
                 }
