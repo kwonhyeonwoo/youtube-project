@@ -3,12 +3,17 @@ import { AuthData } from "../../store/authSlice";
 import { Link, useLocation, useParams } from "react-router-dom";
 import "./css/index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faExpand, faVolumeLow, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faExpand, faVolumeLow, faPause, faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 type Props = {
     data: AuthData | null;
     loading: boolean;
+}
+type VideoPlay ={
+    volumn:boolean,
+    play:boolean;
+    screen:boolean;
 }
 const WatchVideo = ({
 }: Props) => {
@@ -34,18 +39,28 @@ const WatchVideo = ({
     const videoRef = useRef<HTMLVideoElement>(null);
     const rangeRef = useRef<HTMLInputElement>(null);
     const videoContainerRef = useRef<HTMLDivElement>(null);
-    const [videoPlaying, setVideoPlaying] = useState<boolean>(false);
-    const [videoCurrentTime, setVideoCurrentTime] = useState<number | string>("00:00:00");
+    const [videoPlaying, setVideoPlaying] = useState<VideoPlay>({
+        volumn : false,
+        play:false,
+        screen:false
+    });
+    const [videoCurrentTime, setVideoCurrentTime] = useState<number | string>("00:00");
     const [videoTotalTime, setVideoTotalTime] = useState<number | string>(0)
     const [videoMaxTime, setVideoMaxTime] = useState<number>(0);
     const videoClickHandler = () => {
         if (videoRef.current) {
             if (videoRef.current.paused) {
                 setVideoCurrentTime(videoRef.current?.currentTime);
-                setVideoPlaying(true)
+                setVideoPlaying((state)=>({
+                    ...state,
+                    play:true
+                }))
                 videoRef.current.play();
             } else {
-                setVideoPlaying(false)
+                setVideoPlaying((state) => ({
+                    ...state,
+                    play: false
+                }))
                 videoRef.current.pause();
             }
         }
@@ -58,12 +73,34 @@ const WatchVideo = ({
             console.log('video timeline',video.currentTime)
         }
     }
-    const FullScreenClick = ()=>{
+    const FullScreenClick = () => {
         const container = videoContainerRef.current;
-        if (container){
-            container?.requestFullscreen();
+        if (container) {
+            // 현재 풀스크린 상태인지 확인
+            if (!document.fullscreenElement) {
+                // 풀스크린 모드가 아니라면, 풀스크린 요청
+                container.requestFullscreen().then(() => {
+                    setVideoPlaying((state) => ({
+                        ...state,
+                        screen: true // 풀스크린 상태 업데이트
+                    }));
+                }).catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                // 이미 풀스크린 모드라면, 풀스크린 해제
+                document.exitFullscreen().then(() => {
+                    setVideoPlaying((state) => ({
+                        ...state,
+                        screen: false // 일반 화면 상태로 업데이트
+                    }));
+                }).catch(err => {
+                    console.error(`Error attempting to disable full-screen mode: ${err.message} (${err.name})`);
+                });
+            }
         }
-    }
+    };
+
     const ExitFullscreen = ()=>{
         document.exitFullscreen();
     }
@@ -84,12 +121,20 @@ const WatchVideo = ({
     const videoMutedClick = () => {
         if (videoRef.current && rangeRef.current) {
             if (!videoRef.current.muted) {
-                videoRef.current.muted = true
+                videoRef.current.muted = true;
+                setVideoPlaying((state) => ({
+                    ...state,
+                    volumn: false
+                }))
                 rangeRef.current.max = '0'
 
             } else {
                 videoRef.current.muted = false
                 rangeRef.current.min = '0'
+                setVideoPlaying((state) => ({
+                    ...state,
+                    volumn: true
+                }))
 
             }
         }
@@ -103,17 +148,21 @@ const WatchVideo = ({
             <section className="watch-video-section">
                 <div className="video-wrapper">
                     <div className="video" ref={videoContainerRef}>
-                        <video  muted ref={videoRef} src={`http://localhost:4000/${videoUrl}`} />
-                        <div className="video-controller">
+                        <video  
+                            ref={videoRef} 
+                            className={`video ${videoPlaying.screen && 'video-fullscreen'}`}
+                            src={`http://localhost:4000/${videoUrl}`} />
+                        
+                        <div className={`video-controller ${videoPlaying.screen && 'fullscreen-controller'}`}>
                             <button 
                                 className="video-play-btn"
                                 onClick={videoClickHandler}
                             >
-                                {videoPlaying ? <FontAwesomeIcon icon={faPause} /> :<FontAwesomeIcon icon={faPlay} />  }
-                               
+                                {videoPlaying.play ? <FontAwesomeIcon icon={faPause} /> :<FontAwesomeIcon icon={faPlay} />  }
+                            
                             </button>
                             <button className="video-mute" onClick={videoMutedClick}>
-                                <FontAwesomeIcon icon={faVolumeLow} />
+                                {videoPlaying.volumn ? <FontAwesomeIcon icon={faVolumeXmark} /> : <FontAwesomeIcon icon={faVolumeLow} />}
                             </button>
                             <input ref={rangeRef} onChange={videoVolumnChange} type="range" step={0.1} min={0} max={1} className="range" />
                             <input type="range" className="video-timeline" onChange={videoChange} step={1} value={videoRef.current?.currentTime} min={0} max={videoMaxTime}  />
@@ -131,12 +180,13 @@ const WatchVideo = ({
                     </Link>
                     <div className="video-info">
                         <div className="title">{title}</div>
-                        <div className="video-time">
-                            <div className="current-time">current: {videoCurrentTime}</div>
-                            <div className="total-time">duration: {videoTotalTime}</div>
-                        </div>
                         <div className="video-description">{description}</div>
                         <div className="video-hashtags">{hashtags}</div>
+                        <div className="video-time">
+                            <div className="current-time">{videoCurrentTime}</div>
+                            <div className="total-time">  / {videoTotalTime}</div>
+                        </div>
+                       
                     </div>
                 </div>
             </section>

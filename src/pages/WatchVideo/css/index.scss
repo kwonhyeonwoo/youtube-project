@@ -9,52 +9,58 @@
                 &>.video {
                     position: relative;
                     width: 100%;
-                    video {
-                        width: 100%;
+
+                    &>.video {
+                        width: 1100px;
                         height: 100%;
-                        border:1px solid red;
+                    }
+
+                    &>.video-fullscreen {
+                        width: 100%;
                     }
 
                     &>.video-controller {
                         width: 50%;
-                        height:33px;
+                        height: 33px;
                         position: absolute;
-                        bottom:17px;       
-                        left:18%;                 
+                        bottom: 17px;
+                        left: 13%;
                         display: flex;
                         align-items: center;
-                        border-radius:20px;
-                        background-color: rgba(0,0,0,0.7);
-                        column-gap:15px;
-                        padding:0px 10px;
+                        border-radius: 20px;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        column-gap: 15px;
+                        padding: 0px 10px;
                         box-sizing: border-box;
+
                         &>.video-play-btn {
                             font-size: 18px;
-                            color:white;
-                            svg{
-                            }
+                            color: white;
                         }
 
                         &>.video-mute {
-                           svg{
-                                background-color: rgba(0,0,0,0.7);
-                        }
-                        svg path{
-                            color:white;
-                            font-size: 18px;
-                        }
+                            svg {
+                                background-color: rgba(0, 0, 0, 0.7);
+                            }
+
+                            svg path {
+                                color: white;
+                                font-size: 18px;
+                            }
                         }
 
                         &>.video-timeline {
                             width: 100%;
                         }
-                       
-                           
-                            &>.screen-btn{
-                                color:white;
-                                background-color: transparent;
-                            }
-                        
+
+                        &>.screen-btn {
+                            color: white;
+                            background-color: transparent;
+                        }
+
+                    }
+                    &>.fullscreen-controller {
+                        left: 23%;
                     }
                 }
 
@@ -83,8 +89,12 @@
                         color: rgba(255, 255, 255, 0.5);
                         font-weight: 700;
                     }
+                    &>.video-time{
+                        display: flex;
+                    }
                 }
             }
         }
+        padding-bottom: 100px;
     }
 }
