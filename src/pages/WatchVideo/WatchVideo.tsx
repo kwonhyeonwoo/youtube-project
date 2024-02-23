@@ -31,17 +31,14 @@ const WatchVideo = ({
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const rangeRef = useRef<HTMLInputElement>(null);
-    const [videoCurrentTime, setVideoCurrentTime] = useState<number | null>(null);
+    const [videoCurrentTime, setVideoCurrentTime] = useState<number | string>("00:00:00");
+    const [videoTotalTime, setVideoTotalTime] = useState<any>(0)
     const [videoBtn, setVideoBtn] = useState<string>('play');
-    const videoTotalTime = Math.floor(videoRef.current?.duration ?? 0)
-    const formatTime = (time: any) => new Date(time * 1000).toISOString().substring(11, 19);
-
     const videoClickHandler = () => {
         if (videoRef.current) {
             if (videoRef.current.paused) {
                 setVideoBtn('stop')
                 setVideoCurrentTime(videoRef.current?.currentTime);
-                console.log('current', videoCurrentTime)
                 videoRef.current.play();
             } else {
                 setVideoBtn('play')
@@ -55,8 +52,13 @@ const WatchVideo = ({
         const video = videoRef.current;
         if (video) {
             video.addEventListener('timeupdate', () => {
-                setVideoCurrentTime(Math.floor(videoRef.current?.currentTime ?? 0))
+                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
+                setVideoCurrentTime(timeDate(video.currentTime));
             });
+            video.addEventListener('loadedmetadata',()=>{
+                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
+                setVideoTotalTime(timeDate(video.duration))
+            })
         }
     }, []);
     const videoMutedClick = () => {
@@ -90,6 +92,7 @@ const WatchVideo = ({
                             </button>
                             <button className="video-mute" onClick={videoMutedClick}>mute</button>
                             <input ref={rangeRef} onChange={videoVolumnChange} type="range" step={0.1} min={0} max={1} className="range" />
+                            <input type="range"  step={1} min={0} />
                         </div>
                     </div>
                     <Link to={`/auth/${_id}`} className="video-owner">
@@ -99,8 +102,8 @@ const WatchVideo = ({
                     <div className="video-info">
                         <div className="title">{title}</div>
                         <div className="video-time">
-                            <div className="current-time">current: {formatTime(videoCurrentTime)}</div>
-                            <div className="total-time">duration: {formatTime(videoTotalTime)}</div>
+                            <div className="current-time">current: {videoCurrentTime}</div>
+                            <div className="total-time">duration: {videoTotalTime}</div>
                         </div>
                         <div className="video-description">{description}</div>
                         <div className="video-hashtags">{hashtags}</div>
