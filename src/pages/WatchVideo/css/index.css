@@ -11,22 +11,27 @@
           flex-direction: column;
   row-gap: 10px;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container {
   position: relative;
   width: 100%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video {
   width: 1100px;
   height: 100%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-fullscreen {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-fullscreen {
   width: 100%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller {
   width: 50%;
-  height: 33px;
+  height: 39px;
   position: absolute;
-  bottom: 17px;
+  bottom: 30px;
   left: 13%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,28 +48,55 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-play-btn {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller > .video-play-btn {
   font-size: 18px;
   color: white;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute svg {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller > .video-mute svg {
   background-color: rgba(0, 0, 0, 0.7);
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-mute svg path {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller > .video-mute svg path {
   color: white;
   font-size: 18px;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .video-timeline {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller > .video-timeline {
   width: 100%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .video-controller > .screen-btn {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .video-controller > .screen-btn {
   color: white;
   background-color: transparent;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video > .fullscreen-controller {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-container > .fullscreen-controller {
   left: 23%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 15px;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-description {
+  width: 1100px;
+  padding: 18px 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-hashtags {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-owner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -75,30 +107,11 @@
      -moz-column-gap: 11px;
           column-gap: 11px;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner img {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-owner img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-owner > .owner-nickname {
+#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-owner > .owner-nickname {
   font-weight: 700;
-}
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  row-gap: 5px;
-}
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-hashtags {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 700;
-}
-#root .watch-video-page > .watch-video-section > .video-wrapper > .video-info > .video-time {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }

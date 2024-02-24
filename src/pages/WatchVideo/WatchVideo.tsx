@@ -9,14 +9,13 @@ import { faPlay, faExpand, faVolumeLow, faPause, faVolumeXmark } from '@fortawes
 type Props = {
     data: AuthData | null;
     loading: boolean;
-    VideoViewSubmit: () => void;
 }
 type VideoPlay = {
     volumn: boolean,
     play: boolean;
     screen: boolean;
 }
-const WatchVideo = ({ VideoViewSubmit
+const WatchVideo = ({
 }: Props) => {
     const {
         state: {
@@ -36,6 +35,7 @@ const WatchVideo = ({ VideoViewSubmit
             }
         }
     } = useLocation();
+    const params = useParams();
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const rangeRef = useRef<HTMLInputElement>(null);
@@ -101,24 +101,6 @@ const WatchVideo = ({ VideoViewSubmit
             }
         }
     };
-
-    const ExitFullscreen = () => {
-        document.exitFullscreen();
-    }
-    useEffect(() => {
-        const video = videoRef.current;
-        if (video) {
-            video.addEventListener('timeupdate', () => {
-                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
-                setVideoCurrentTime(timeDate(video.currentTime));
-            });
-            video.addEventListener('loadedmetadata', () => {
-                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
-                setVideoMaxTime(Math.floor(video.duration))
-                setVideoTotalTime(timeDate(video.duration))
-            })
-        }
-    }, []);
     const videoMutedClick = () => {
         if (videoRef.current && rangeRef.current) {
             if (!videoRef.current.muted) {
@@ -140,33 +122,54 @@ const WatchVideo = ({ VideoViewSubmit
             }
         }
     }
-
-    const videoVolumnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('volumne', event.target.value);
-    }
+    useEffect(() => {
+        const video = videoRef.current;
+        if (video) {
+            video.addEventListener('timeupdate', () => {
+                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
+                setVideoCurrentTime(timeDate(video.currentTime));
+            });
+            video.addEventListener('loadedmetadata', () => {
+                const timeDate = (time: number) => new Date(Math.floor(time) * 1000).toISOString().substring(14, 19);
+                setVideoMaxTime(Math.floor(video.duration))
+                setVideoTotalTime(timeDate(video.duration))
+            })
+            video.addEventListener('ended', async () => {
+                const response = await fetch(`http://localhost:4000/video/${params.id}/views`, {
+                    method: "POST"
+                })
+                const responseData = await response.json();
+                console.log('data', responseData)
+            })
+        }
+    }, []);
     return (
         <main className="watch-video-page">
             <section className="watch-video-section">
                 <div className="video-wrapper">
-                    <div className="video" ref={videoContainerRef}>
+                    <div className="video-container" ref={videoContainerRef}>
                         <video
                             ref={videoRef}
                             className={`video ${videoPlaying.screen && 'video-fullscreen'}`}
-                            src={`http://localhost:4000/${videoUrl}`} />
-
+                            src={`http://localhost:4000/${videoUrl}`}
+                        />
+                        <div className="video-time">
+                            <div className="current-time">{videoCurrentTime}</div>
+                            <div className="total-time">  / {videoTotalTime}</div>
+                        </div>
                         <div className={`video-controller ${videoPlaying.screen && 'fullscreen-controller'}`}>
                             <button
                                 className="video-play-btn"
                                 onClick={videoClickHandler}
                             >
-                                {videoPlaying.play ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} onClick={VideoViewSubmit} />}
+                                {videoPlaying.play ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
 
                             </button>
+
+                            <input type="range" className="video-timeline" onChange={videoChange} step={1} value={videoRef.current?.currentTime} min={0} max={videoMaxTime} />
                             <button className="video-mute" onClick={videoMutedClick}>
                                 {videoPlaying.volumn ? <FontAwesomeIcon icon={faVolumeXmark} /> : <FontAwesomeIcon icon={faVolumeLow} />}
                             </button>
-                            <input ref={rangeRef} onChange={videoVolumnChange} type="range" step={0.1} min={0} max={1} className="range" />
-                            <input type="range" className="video-timeline" onChange={videoChange} step={1} value={videoRef.current?.currentTime} min={0} max={videoMaxTime} />
                             <button className="screen-btn" onClick={FullScreenClick}>
                                 <FontAwesomeIcon style={{ backgroundColor: 'transparent' }} icon={faExpand} />
                             </button>
@@ -175,20 +178,21 @@ const WatchVideo = ({ VideoViewSubmit
                             </div>
                         </div>
                     </div>
-                    <Link to={`/auth/${_id}`} className="video-owner">
-                        <img src={`http://localhost:4000/${avatar}`} alt="owner-avatar" />
-                        <div className="owner-nickname">{nickName}</div>
-                    </Link>
                     <div className="video-info">
-                        <div className="title">{title}</div>
-                        <div className="video-description">{description}</div>
-                        <div className="video-hashtags">{hashtags}</div>
-                        <div className="video-time">
-                            <div className="current-time">{videoCurrentTime}</div>
-                            <div className="total-time">  / {videoTotalTime}</div>
+                        <div className="video-title">{title}</div>
+                        <Link to={`/auth/${_id}`} className="video-owner">
+                            <img src={`http://localhost:4000/${avatar}`} alt="owner-avatar" />
+                            <div className="owner-nickname">{nickName}</div>
+                        </Link>
+                        <div className="video-description">
+                            {description}
                         </div>
+                        <div className="video-hashtags">{hashtags}</div>
+
 
                     </div>
+
+
                 </div>
             </section>
         </main>
