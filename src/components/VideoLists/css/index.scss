@@ -15,8 +15,8 @@
 
                 &>.video {
                     height: 174px;
-                    border-radius: 15px;
-                    background-color: rgba(255, 255, 255, 0.5);
+                    border-radius: 10px;
+                    object-fit: cover
                 }
 
                 &>.content-wrapper {
@@ -24,13 +24,25 @@
                     &>.profile-wrapper {
                         display: flex;
                         align-items: center;
-                        column-gap: 8px;
+                        column-gap: 14px;
 
                         &>.profile-avatar {
                             width: 30px;
                             height: 30px;
                             border-radius: 50%;
                             background-color: gray;
+                        }
+
+                        &>.meta-wrapper {
+                            display: flex;
+                            column-gap: 5px;
+                            font-size: 14px;
+                            // color: #AAAA;
+                            flex-direction: column;
+
+                            &>.video-view {
+                                display: flex;
+                            }
                         }
 
                         &>.title {
@@ -40,24 +52,18 @@
                             word-break: break-all;
                             width: 200px;
                             height: 20px;
-                            color: white;
+                            color: red;
+                            font-weight: 800;
                         }
                     }
 
                     &>.source {
-                        padding-left: 38px;
                         font-size: 14px;
                         color: #AAAA;
                         font-weight: 700;
                     }
 
-                    &>.meta-wrapper {
-                        display: flex;
-                        column-gap: 11px;
-                        padding-left: 38px;
-                        font-size: 14px;
-                        color: #AAAA;
-                    }
+
                 }
             }
         }

@@ -77,23 +77,20 @@ const WatchVideo = ({
     const FullScreenClick = () => {
         const container = videoContainerRef.current;
         if (container) {
-            // 현재 풀스크린 상태인지 확인
             if (!document.fullscreenElement) {
-                // 풀스크린 모드가 아니라면, 풀스크린 요청
                 container.requestFullscreen().then(() => {
                     setVideoPlaying((state) => ({
                         ...state,
-                        screen: true // 풀스크린 상태 업데이트
+                        screen: true
                     }));
                 }).catch(err => {
                     console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
                 });
             } else {
-                // 이미 풀스크린 모드라면, 풀스크린 해제
                 document.exitFullscreen().then(() => {
                     setVideoPlaying((state) => ({
                         ...state,
-                        screen: false // 일반 화면 상태로 업데이트
+                        screen: false
                     }));
                 }).catch(err => {
                     console.error(`Error attempting to disable full-screen mode: ${err.message} (${err.name})`);

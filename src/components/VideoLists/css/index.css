@@ -21,8 +21,9 @@
 }
 #root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .video {
   height: 174px;
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .profile-wrapper {
   display: -webkit-box;
@@ -31,15 +32,33 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-column-gap: 8px;
-     -moz-column-gap: 8px;
-          column-gap: 8px;
+  -webkit-column-gap: 14px;
+     -moz-column-gap: 14px;
+          column-gap: 14px;
 }
 #root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .profile-wrapper > .profile-avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: gray;
+}
+#root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .profile-wrapper > .meta-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 5px;
+     -moz-column-gap: 5px;
+          column-gap: 5px;
+  font-size: 14px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .profile-wrapper > .meta-wrapper > .video-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 #root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .profile-wrapper > .title {
   overflow: hidden;
@@ -48,22 +67,11 @@
   word-break: break-all;
   width: 200px;
   height: 20px;
-  color: white;
+  color: red;
+  font-weight: 800;
 }
 #root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .source {
-  padding-left: 38px;
   font-size: 14px;
   color: rgba(170, 170, 170, 0.6666666667);
   font-weight: 700;
-}
-#root .video-lists-wrapper > .video-detail-wrapper > .detail-box > .content-wrapper > .meta-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-column-gap: 11px;
-     -moz-column-gap: 11px;
-          column-gap: 11px;
-  padding-left: 38px;
-  font-size: 14px;
-  color: rgba(170, 170, 170, 0.6666666667);
 }
