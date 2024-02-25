@@ -8,7 +8,7 @@ const HeaderContainer = () => {
     const { data, loading, error } = useSelector((state: RootState) => state.getAuth);
     useEffect(() => {
         dispatch(fetchData());
-    }, [dispatch])
+    }, [])
     return (
         <Header
             data={data}

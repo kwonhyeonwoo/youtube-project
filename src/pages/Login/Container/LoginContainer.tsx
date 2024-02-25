@@ -5,11 +5,12 @@ import useAuthChange from '../../../hooks/useAuthChange';
 
 const LoginContainer = () => {
     const navigate = useNavigate();
-    const { authData,
+    const {
+        authData,
         onChange,
         isError,
         setIsError
-    }= useAuthChange();
+    } = useAuthChange();
     const LoginSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {

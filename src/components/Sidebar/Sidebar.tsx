@@ -3,8 +3,35 @@ import "./css/index.css";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faFilm, faUser } from '@fortawesome/free-solid-svg-icons';
-
-const Sidebar = () => {
+import { AuthData } from '../../store/authSlice';
+type Props = {
+    data: AuthData | null;
+}
+const Sidebar = ({ data }: Props) => {
+    const sidebarArr = [
+        {
+            svg: <div className='channel-wrapper'>
+                <FontAwesomeIcon icon={faUser} />
+            </div>,
+            title: "내 채널",
+            link: "/chanel",
+        },
+        {
+            svg: <FontAwesomeIcon icon={faHeart} />,
+            title: "인기순 동영상",
+            link: "/video/best",
+        },
+        {
+            svg: <FontAwesomeIcon icon={faFilm} />,
+            title: "내 동영상",
+            link: `/${data?._id}/profile`,
+        },
+        {
+            svg: <FontAwesomeIcon icon={faFilm} />,
+            title: "영상 업로드",
+            link: "/video/upload",
+        },
+    ]
     return (
         <div className='sidebar-wrapper'>
             <div className='container'>
@@ -44,30 +71,7 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-const sidebarArr = [
-    {
-        svg: <div className='channel-wrapper'>
-            <FontAwesomeIcon icon={faUser} />
-        </div>,
-        title: "내 채널",
-        link: "/chanel",
-    },
-    {
-        svg: <FontAwesomeIcon icon={faHeart} />,
-        title: "좋아요 표시한 동영상",
-        link: "/video/likes",
-    },
-    {
-        svg: <FontAwesomeIcon icon={faFilm} />,
-        title: "내 동영상",
-        link: "/:id/profile",
-    },
-    {
-        svg: <FontAwesomeIcon icon={faFilm} />,
-        title: "영상 업로드",
-        link: "/video/upload",
-    },
-]
+
 
 // 임시 데이터
 const subscribeArr = [

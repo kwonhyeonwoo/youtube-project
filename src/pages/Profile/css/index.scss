@@ -44,6 +44,7 @@
                 padding-top: 22px;
                 padding-left: 30px;
                 box-sizing: border-box;
+
                 &>.videos-title {
                     font-size: 30px;
                     font-weight: 700;
@@ -61,16 +62,54 @@
                         }
 
                         &>.video-info {
+                            position: relative;
+
                             &>.video-title {
                                 font-size: 15px;
                             }
+
+                            &>.container {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding-right: 20px;
+                                box-sizing: border-box;
+
+                                &>.ellipsis-svg {}
+
+                                &>.ellipsis-svg {
+                                    cursor: pointer;
+                                }
+
+
+                            }
+
+                            &>.ellipsis-wrapper {
+                                width: 66px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                background-color: rgba(0, 0, 0, 0.5);
+                                position: absolute;
+                                right: 20px;
+
+                                div {
+                                    width: 100%;
+                                    height: 30px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border: 1px solid rgba(255, 255, 255, 0.4);
+                                }
+                            }
                         }
                     }
-                    &>.no-video{
-                        color:white;
-                        margin:0 auto;
+
+                    &>.no-video {
+                        color: white;
+                        margin: 0 auto;
                         padding-top: 25px;
-                        font-size:22px;
+                        font-size: 22px;
                         font-weight: 700;
                     }
                 }

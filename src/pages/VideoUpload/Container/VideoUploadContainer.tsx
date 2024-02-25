@@ -50,6 +50,7 @@ const VideoUploadContainer = () => {
             body: formData
         })
         const responseData = await response.json();
+
         console.log('responseData', responseData);
     }
     return (

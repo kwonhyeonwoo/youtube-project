@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export interface VideosData {
     videoUrl: string | null;
     title: string | null;
-    descriptions: string | null;
+    description: string | null;
     hashtags: [string | null];
     meta: {
         views: number | 0,
@@ -15,7 +15,7 @@ export interface VideosData {
         name: string;
         nickName: string;
     }
-    _id:string;
+    _id: string;
 }
 
 export const videosData = createAsyncThunk<VideosData[], void>(

@@ -1,0 +1,80 @@
+#root {
+    .best-videos-page {
+        &>.best-videos-section {
+            &>.videos-wrapper {
+                display: flex;
+                flex-direction: column;
+                row-gap: 31px;
+
+                &>.video-container {
+                    width: 888px;
+
+                    &>.video {
+                        width: 100%;
+                    }
+
+                    &>.video-info {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 10px;
+
+                        &>.owner-wrapper {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            column-gap: 11px;
+
+                            &>.owner-container {
+                                display: flex;
+                                align-items: center;
+                                column-gap: 9px;
+
+                                &>.owner-avatar {
+                                    width: 33px;
+                                    height: 33px;
+                                    border-radius: 50%;
+                                }
+
+                                &>.owner-nickname {
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+
+                        &>.video-detail-box {
+                            width: 888px;
+                            display: flex;
+                            flex-direction: column;
+                            // align-items: center;
+                            column-gap: 11px;
+                            overflow-y: hidden;
+                            row-gap: 11px;
+
+                            &>.detail-title {
+                                font-size: 17px;
+                                font-weight: 700;
+                            }
+
+                            &>.detail-description {
+                                width: 888px;
+                                font-weight: 700;
+                                background-color: rgba(255, 255, 255, 0.2);
+                                padding: 10px 8px;
+                                border-radius: 5px;
+                                box-sizing: border-box;
+                            }
+
+
+                        }
+
+                        &>.detail-views {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
