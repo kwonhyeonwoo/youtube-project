@@ -5,14 +5,13 @@
         &>.video-upload-section {
             &>.video-upload-wrapper {
                 height: 100%;
-                padding-top: 77px;
+                padding-top: 10px;
                 display: flex;
                 align-items: center;
                 // justify-content: space-between;
                 column-gap: 55px;
 
                 &>.video-detail-wrapper {
-                    width: 667px;
                     display: flex;
                     flex-direction: column;
                     row-gap: 20px;
@@ -20,46 +19,87 @@
 
                     &>.video-detail-title {
                         font-weight: 700;
-                        font-size: 33px;
-
+                        font-size: 28px;
                     }
 
                     &>.video-title {
-                        width: 100%;
-                        height: 64px;
-                        box-sizing: border-box;
-                        padding: 10px 0px;
-                        border: 2px solid rgba(255, 255, 255, 0.5);
-                        border-radius: 5px;
+                        width: 333px;
+                        height: 66px;
                         padding-left: 10px;
+                        box-sizing: border-box;
+                        border: 1px solid rgba(255, 255, 255, 0.5);
+                        border-radius: 5px;
                         outline: none;
                         color: white;
                         box-sizing: border-box;
+                        font-size: 13px;
 
+                        &:focus {
+                            border: 1px solid rgba(29, 161, 242, 1)
+                        }
+
+                        &::placeholder {
+                            font-weight: 500;
+                            position: absolute;
+                            top: 10px;
+                            font-size: 13px;
+                        }
                     }
 
-                    &>.video-description {
-                        width: 100%;
-                        height: 333px;
-                        padding: 10px 13px;
-                        font-size: 20px;
-                        line-height: 150%;
-                        border: 2px solid rgba(255, 255, 255, 0.5);
-                        border-radius: 5px;
-                        box-sizing: border-box;
-                        color: white;
-                        outline: none;
-                        font-size: 15px;
+                    &>.description-wrapper {
+                        position: relative;
 
+                        &>.video-description {
+                            width: 333px;
+                            height: 333px;
+                            padding: 10px 13px;
+                            font-size: 20px;
+                            line-height: 150%;
+                            border: 1px solid rgba(255, 255, 255, 0.5);
+                            border-radius: 5px;
+                            box-sizing: border-box;
+                            color: white;
+                            outline: none;
+                            font-size: 13px;
+                            resize: none;
+                            padding-top:32px;
+                            box-sizing: border-box;
+                            &::placeholder{
+                                position:absolute;
+                                top:31px;
+                            }
+                            &:focus {
+                                border: 1px solid rgba(29, 161, 242, 1);
+                            }
+                        }
+
+                        &>.description-text {
+                            color:rgba(255, 255, 255, 0.5);;
+                            // color:rgba(29, 161, 242, 1);
+                            font-weight: 700;
+                            top:0;
+                            top:11px;
+                            left:10px;
+                            position: absolute;
+                            font-size: 13px;
+                        }
                     }
 
                     &>.video-hashtags {
-                        border: 2px solid rgba(255, 255, 255, 0.5);
+                        width: 333px;
+                        height: 43px;
+                        border: 1px solid rgba(255, 255, 255, 0.5);
                         padding: 6px;
                         box-sizing: border-box;
                         color: white;
                         outline: none;
                         border-radius: 5px;
+                        font-size: 13px;
+
+                        &:focus {
+                            border: 1px solid rgba(29, 161, 242, 1)
+                        }
+
                     }
 
                 }
@@ -67,32 +107,24 @@
                 &>.video-choice {
                     display: flex;
                     flex-direction: column;
-                    justify-content: end;
                     margin-top: auto;
-
                     &>.video {
-                        width: 333px;
-                        height: 331px;
+                        width: 304px;
+                        height: 171px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        border: 2px dashed rgba(255, 255, 255, 0.5);
+                        border: 1px solid rgba(255, 255, 255, 0.5);
                         border-radius: 10px;
-
                         &:hover {
-                            border: 2px dashed rgba(255, 255, 255, 0.8);
+                            border: 1px solid rgba(255, 255, 255, 0.8);
                             transition: all .2s ease-in-out;
-
-                            &>.upload-label {
-                                svg {
-                                    color: rgba(255, 255, 255, 0.7)
-                                }
-                            }
+                            
                         }
 
                         &>.upload-label {
                             svg {
-                                height: 78px;
+                                height: 38px;
                                 color: rgba(255, 255, 255, 0.5);
                             }
                         }

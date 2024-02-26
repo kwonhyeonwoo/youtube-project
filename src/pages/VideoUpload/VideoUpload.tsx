@@ -27,16 +27,19 @@ const VideoUpload = ({
                             minLength={5}
                             max={15}
                             required />
-
-                        <textarea
-                            className="video-description"
-                            name="description"
-                            onChange={DescriptionChange}
-                            minLength={10}
-                            maxLength={200}
-                            placeholder="시청자에게 동영상에 대해 설명해주세요."
-                            required
-                        />
+                        <div className="description-wrapper">
+                            <textarea
+                                className="video-description"
+                                name="description"
+                                onChange={DescriptionChange}
+                                minLength={10}
+                                maxLength={200}
+                                placeholder="시청자에게 동영상에 대해 설명해주세요."
+                                required
+                            />
+                            <div className="description-text">설명</div>
+                        </div>
+                        
                         <input type="text" name="hashtags" onChange={VideoChange} placeholder="해쉬태그" className="video-hashtags" />
                     </div>
                     <div className="video-choice">
