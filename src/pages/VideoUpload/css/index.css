@@ -2,20 +2,86 @@
   height: 100%;
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper {
-  padding-top: 100px;
+  height: 100%;
+  padding-top: 77px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  height: 100%;
+  -webkit-column-gap: 55px;
+     -moz-column-gap: 55px;
+          column-gap: 55px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper {
+  width: 667px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+  margin-top: 15px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-detail-title {
+  font-weight: 700;
+  font-size: 33px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-title {
+  width: 100%;
+  height: 64px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 0px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  padding-left: 10px;
+  outline: none;
+  color: white;
+  box-sizing: border-box;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-description {
+  width: 100%;
+  height: 333px;
+  padding: 10px 13px;
+  font-size: 20px;
+  line-height: 150%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  outline: none;
+  font-size: 15px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-hashtags {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  outline: none;
+  border-radius: 5px;
+}
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-top: auto;
 }
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .video {
-  width: 620px;
-  height: 433px;
+  width: 333px;
+  height: 331px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,53 +109,12 @@
 #root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice [type=file] {
   display: none;
 }
-#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  row-gap: 20px;
-  margin-top: 15px;
-}
-#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-title {
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  width: 350px;
-  height: 44px;
-  padding-left: 10px;
-  outline: none;
-  color: white;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-description {
-  width: 440px;
-  height: 253px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  padding: 6px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: white;
-  outline: none;
-  font-size: 15px;
-}
-#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-detail-wrapper > .video-hashtags {
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 6px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: white;
-  outline: none;
-  border-radius: 5px;
-}
-#root .video-upload-page > .video-upload-section > .video-upload-wrapper .upload-button {
+#root .video-upload-page > .video-upload-section > .video-upload-wrapper > .video-choice > .upload-button {
   width: 350px;
   height: 50px;
   border-radius: 6px;
-  margin: 0 auto;
+  margin-top: 33px;
+  float: left;
   font-weight: 700;
   background-color: white;
 }

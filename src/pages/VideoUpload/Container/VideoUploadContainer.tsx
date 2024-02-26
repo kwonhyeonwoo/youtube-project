@@ -16,12 +16,7 @@ const VideoUploadContainer = () => {
                 title: value
             }));
         }
-        if (name === 'description') {
-            setVideoData(current => ({
-                ...current,
-                description: value
-            }));
-        };
+
         if (name === 'hashtags') {
             setVideoData(current => ({
                 ...current,
@@ -29,8 +24,19 @@ const VideoUploadContainer = () => {
             }));
         };
         if (name === 'videoUrl' && files && files.length > 0) {
-            setVideoUrl(files[0]);
+            if (event.target instanceof HTMLInputElement && event.target.files && event.target.files.length > 0) {
+                setVideoUrl(event.target.files[0]);
+            }
         }
+    }
+    const DescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { value, name } = event.target;
+        if (name === 'description') {
+            setVideoData(current => ({
+                ...current,
+                description: value
+            }));
+        };
     }
     const VideoUploadSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -57,6 +63,7 @@ const VideoUploadContainer = () => {
         <VideoUpload
             VideoSubmit={VideoUploadSubmit}
             VideoChange={VideoDataChange}
+            DescriptionChange={DescriptionChange}
         />
     )
 };

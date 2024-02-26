@@ -1,70 +1,56 @@
 #root {
     .video-upload-page {
-        height:100%;
+        height: 100%;
+
         &>.video-upload-section {
             &>.video-upload-wrapper {
-                padding-top: 100px;
+                height: 100%;
+                padding-top: 77px;
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
-                height:100%;
-                &>.video-choice {
-                    &>.video {
-                        width: 620px;
-                        height: 433px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        border: 2px dashed rgba(255, 255, 255, 0.5);
-                        border-radius: 10px;
-                        &:hover{
-                            border:2px dashed rgba(255,255,255,0.8);
-                            transition: all .2s ease-in-out;
-                            &>.upload-label{
-                                svg{
-                                    color:rgba(255,255,255,0.7)
-                                }
-                            }
-                        }
-                        &>.upload-label{
-                            svg{
-                                height:78px;
-                                color:  rgba(255, 255, 255, 0.5);
-                            }
-                        }
-                    }
-
-                    [type='file'] {
-                        display: none;
-                    }
-                }
+                // justify-content: space-between;
+                column-gap: 55px;
 
                 &>.video-detail-wrapper {
+                    width: 667px;
                     display: flex;
                     flex-direction: column;
                     row-gap: 20px;
-                    margin-top: 15px;;
+                    margin-top: 15px;
+
+                    &>.video-detail-title {
+                        font-weight: 700;
+                        font-size: 33px;
+
+                    }
+
                     &>.video-title {
+                        width: 100%;
+                        height: 64px;
+                        box-sizing: border-box;
+                        padding: 10px 0px;
                         border: 2px solid rgba(255, 255, 255, 0.5);
-                        width: 350px;
-                        height: 44px;
+                        border-radius: 5px;
                         padding-left: 10px;
                         outline: none;
                         color: white;
                         box-sizing: border-box;
+
                     }
 
                     &>.video-description {
-                        width: 440px;
-                        height: 253px;
+                        width: 100%;
+                        height: 333px;
+                        padding: 10px 13px;
+                        font-size: 20px;
+                        line-height: 150%;
                         border: 2px solid rgba(255, 255, 255, 0.5);
                         border-radius: 5px;
-                        padding: 6px;
                         box-sizing: border-box;
                         color: white;
                         outline: none;
                         font-size: 15px;
-                        
+
                     }
 
                     &>.video-hashtags {
@@ -78,14 +64,58 @@
 
                 }
 
-                .upload-button {
-                    width:350px;
-                    height:50px;
-                    border-radius: 6px;
-                    margin:0 auto;
-                    font-weight: 700;
-                    background-color: white;
+                &>.video-choice {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+                    margin-top: auto;
+
+                    &>.video {
+                        width: 333px;
+                        height: 331px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 2px dashed rgba(255, 255, 255, 0.5);
+                        border-radius: 10px;
+
+                        &:hover {
+                            border: 2px dashed rgba(255, 255, 255, 0.8);
+                            transition: all .2s ease-in-out;
+
+                            &>.upload-label {
+                                svg {
+                                    color: rgba(255, 255, 255, 0.7)
+                                }
+                            }
+                        }
+
+                        &>.upload-label {
+                            svg {
+                                height: 78px;
+                                color: rgba(255, 255, 255, 0.5);
+                            }
+                        }
+                    }
+
+                    [type='file'] {
+                        display: none;
+                    }
+
+                    &>.upload-button {
+                        width: 350px;
+                        height: 50px;
+                        border-radius: 6px;
+                        margin-top: 33px;
+                        float: left;
+                        font-weight: 700;
+                        background-color: white;
+                    }
                 }
+
+
+
+
             }
         }
     }
